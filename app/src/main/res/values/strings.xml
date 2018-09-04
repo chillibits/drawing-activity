@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DrawingActivityExample</string>
+    <string name="open_drawing_activity">Open DrawingActivity</string>
+</resources>

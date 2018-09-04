@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sothree.slidinguppanel.SlidingUpPanelLayout
+    android:id="@+id/slidingLayout"
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    sothree:umanoPanelHeight="70dp"
+    sothree:umanoShadowHeight="3dp"
+    sothree:umanoScrollableView="@id/scrollview"
+    tools:context=".DrawingActivity" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/toolbar" />
+
+        <com.raed.drawingview.DrawingView
+            android:id="@+id/drawing_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            app:brush="pen"
+            app:brush_color="#000"
+            app:drawing_background_color="#eee" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/color_preview"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/round_button"
+            android:tint="@color/black"/>
+
+        <TextView
+            android:id="@+id/current_utility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/color_preview"/>
+
+        <TextView
+            android:id="@+id/current_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/current_utility"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="17sp"
+            android:layout_toRightOf="@+id/color_preview"/>
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/arrow_drop_up_black"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:tint="@color/gray_light"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+        <RelativeLayout
+            android:id="@+id/seperator01"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/color_preview"
+            android:background="@color/gray_light"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+
+        <com.raed.drawingview.BrushView
+            android:id="@+id/brush_view"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_below="@+id/seperator01"/>
+
+        <RelativeLayout
+            android:id="@+id/seperator02"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/brush_view"
+            android:background="@color/gray_light"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+
+        <ScrollView
+            android:id="@+id/scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/seperator02">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/color_preview_slide"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:srcCompat="@drawable/round_button"
+                    android:layout_marginTop="5dp"
+                    android:tint="@color/black"/>
+
+                <Button
+                    android:id="@+id/choose_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/choose_color"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/color_preview_slide"
+                    android:layout_alignTop="@+id/color_preview_slide"/>
+
+                <SeekBar
+                    android:id="@+id/size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:min="1"
+                    android:max="100"
+                    android:progress="25"
+                    android:layout_below="@+id/color_preview_slide"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
+
+                <RadioGroup
+                    android:id="@+id/utility"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/size">
+
+                    <RadioButton
+                        android:id="@+id/utility_pencil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/pencil"/>
+
+                    <RadioButton
+                        android:id="@+id/utility_eraser"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/eraser"/>
+
+                    <RadioButton
+                        android:id="@+id/utility_airbrush"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/air_brush"/>
+
+                    <RadioButton
+                        android:id="@+id/utility_calligraphy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/calligraphy"/>
+
+                    <RadioButton
+                        android:id="@+id/utility_pen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pen"/>
+                </RadioGroup>
+
+                <RelativeLayout
+                    android:id="@+id/seperator03"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/utility"
+                    android:background="@color/gray_light"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
+
+                <RadioGroup
+                    android:id="@+id/background"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/seperator03"
+                    android:layout_marginTop="5dp">
+
+                    <RadioButton
+                        android:id="@+id/background_color"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/background_color"
+                        android:checked="true"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp">
+
+                        <ImageView
+                            android:id="@+id/background_color_preview"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            app:srcCompat="@drawable/round_button"
+                            android:tint="#eee" />
+
+                        <Button
+                            android:id="@+id/choose_background_color"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/background_color_preview"
+                            android:layout_alignTop="@+id/background_color_preview"
+                            android:text="@string/choose_color"/>
+                    </RelativeLayout>
+
+                    <RadioButton
+                        android:id="@+id/background_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/background_image"
+                        android:layout_below="@+id/background_color_preview"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp">
+
+                        <com.mrgames13.jimdo.chatlet.HelpClasses.SelectableRoundedImageView
+                            android:id="@+id/background_image_preview"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@mipmap/ic_launcher" />
+
+                        <Button
+                            android:id="@+id/choose_background_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/background_image_preview"
+                            android:layout_alignTop="@+id/background_image_preview"
+                            android:text="@string/choose_image"
+                            android:enabled="false"/>
+                    </RelativeLayout>
+                </RadioGroup>
+
+                <RelativeLayout
+                    android:id="@+id/seperator04"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/background"
+                    android:background="@color/gray_light"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
+
+                <Button
+                    android:id="@+id/clear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/clear_image"
+                    android:layout_below="@+id/seperator04"/>
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>

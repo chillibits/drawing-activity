@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Drawing Activity</string>
+
+    <string name="drawing">Drawing</string>
+    <string name="drawing_instructions">Draw within the white area</string>
+    <string name="redo">Redo</string>
+    <string name="pencil">Pencil</string>
+    <string name="eraser">Eraser</string>
+    <string name="air_brush">Air brush</string>
+    <string name="pen">Pen</string>
+    <string name="current_utility_">Utility:</string>
+    <string name="current_size_">Size:</string>
+    <string name="background_color">Background color</string>
+    <string name="choose_color">Choose color</string>
+    <string name="choose_image">Choose image</string>
+    <string name="clear_image">Clear image</string>
+    <string name="background_image">Background image</string>
+    <string name="warning_background_image">When you set the background image, the drawing would be cleared. Continue?</string>
+    <string name="warning_clear">Do you really want to clear the drawing?</string>
+    <string name="calligraphy">Calligraphy</string>
+    <string name="undo">Undo</string>
+    <string name="done">Done</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="press_again_to_discard_drawing">Tap once again to discard the drawing</string>
+</resources>

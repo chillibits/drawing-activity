@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Drawing Activity</string>
+
+    <string name="drawing">Zeichnung</string>
+    <string name="drawing_instructions">Zeichne auf die weiße Fläche</string>
+    <string name="undo">Rückgängig</string>
+    <string name="redo">Wiederholen</string>
+    <string name="pencil">Bleistift</string>
+    <string name="eraser">Radierer</string>
+    <string name="air_brush">Sprühpistole</string>
+    <string name="calligraphy">Schrift</string>
+    <string name="pen">Stift</string>
+    <string name="current_utility_">Werkzeug:</string>
+    <string name="current_size_">Größe:</string>
+    <string name="warning_clear">Wollen Sie wirklich die Zeichnung leeren?</string>
+    <string name="warning_background_image">Wenn das Hintergrundbild festgelegt wird, wird die Zeichnung geleert. Wollen Sie fortfahren?</string>
+    <string name="background_color">Hintergrundfarbe</string>
+    <string name="background_image">Hintergrundbild</string>
+    <string name="choose_color">Farbe wählen</string>
+    <string name="choose_image">Bild wählen</string>
+    <string name="clear_image">Bild leeren</string>
+    <string name="done">Fertig</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="yes">Ja</string>
+    <string name="press_again_to_discard_drawing">Nochmals drücken um die Zeichnung zu verwerfen</string>
+</resources>
