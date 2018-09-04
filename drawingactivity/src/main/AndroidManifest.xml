@@ -5,7 +5,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application>
-        <activity android:name=".DrawingActivity"></activity>
+        <activity
+            android:name=".DrawingActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
