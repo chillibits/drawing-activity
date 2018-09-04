@@ -1,2 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mrgames13.jimdo.drawingactivity" />
+    package="com.mrgames13.jimdo.drawingactivity">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <application>
+        <activity android:name=".DrawingActivity"></activity>
+    </application>
+
+</manifest>
