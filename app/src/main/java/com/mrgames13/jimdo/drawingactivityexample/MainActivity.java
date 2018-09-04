@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         open_drawing_activity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                DrawingActivity.class
             }
         });
     }
