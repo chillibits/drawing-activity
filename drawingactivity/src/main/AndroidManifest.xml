@@ -7,7 +7,7 @@
     <application>
         <activity
             android:name=".DrawingActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/DrawingStyle"/>
     </application>
 
 </manifest>
