@@ -1,7 +1,9 @@
 package com.mrgames13.jimdo.drawingactivity;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -36,17 +38,26 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import droidninja.filepicker.FilePickerBuilder;
 import droidninja.filepicker.FilePickerConst;
 
 public class DrawingActivity extends AppCompatActivity {
 
     //Constants
-    private final float DRAWING_DEFAULT_UTILITY_SIZE = 0.25f;
     private final int IMAGE_COMPRESSION_QUALITY = 85;
+    private final int REQ_READ_EXTERNAL_STORAGE = 1;
+    public static final String DRAWING_PATH = "DrawingPath";
+    public static final int UTILITIY_PENCIL = 1;
+    public static final int UTILITIY_ERASER = 2;
+    public static final int UTILITIY_AIR_BRUSH = 3;
+    public static final int UTILITIY_CALLIGRAPHY = 4;
+    public static final int UTILITIY_PEN = 5;
 
     //Variables as objects
     private Resources res;
@@ -86,12 +97,15 @@ public class DrawingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawing);
 
+        //Get calling intent
+        Intent i = getIntent();
+
         //Initialize Resources
         res = getResources();
 
         //Initialize Toolbar
         toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.drawing);
+        toolbar.setTitle((i.hasExtra(DrawingActivityBuilder.TITLE) && !i.getStringExtra(DrawingActivityBuilder.TITLE).equals("")) ? i.getStringExtra(DrawingActivityBuilder.TITLE) : getString(R.string.drawing));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if(Build.VERSION.SDK_INT >= 21) getWindow().setStatusBarColor(darkenColor(res.getColor(R.color.colorPrimary)));
@@ -111,7 +125,7 @@ public class DrawingActivity extends AppCompatActivity {
         //Initialize DrawingView
         drawing_view = findViewById(R.id.drawing_view);
         drawing_view.setUndoAndRedoEnable(true);
-        drawing_view.getBrushSettings().setSelectedBrushSize(DRAWING_DEFAULT_UTILITY_SIZE);
+        drawing_view.getBrushSettings().setSelectedBrushSize(0.25f);
         drawing_view.setOnDrawListener(new DrawingView.OnDrawListener() {
             @Override
             public void onDraw() {
@@ -125,12 +139,12 @@ public class DrawingActivity extends AppCompatActivity {
         });
         drawing_view.clear();
 
-        //Previews initialisieren
+        //Initialize Preview
         color_preview = findViewById(R.id.color_preview);
         current_utility = findViewById(R.id.current_utility);
         current_utility.setText(getString(R.string.current_utility_) + " " + getString(R.string.pencil));
         current_size = findViewById(R.id.current_size);
-        current_size.setText(getString(R.string.current_size_) + " " + String.valueOf(DRAWING_DEFAULT_UTILITY_SIZE));
+        current_size.setText(getString(R.string.current_size_) + " 25%");
         arrow = findViewById(R.id.arrow);
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,7 +153,7 @@ public class DrawingActivity extends AppCompatActivity {
             }
         });
 
-        //BrushView initialisieren
+        //Initialize BrushView
         brush_view = findViewById(R.id.brush_view);
         brush_view.setDrawingView(drawing_view);
 
@@ -170,7 +184,7 @@ public class DrawingActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 settings.setSelectedBrushSize(i / 100.0f);
-                current_size.setText(res.getString(R.string.current_size_) + " " + String.valueOf(i / 100.0f));
+                current_size.setText(res.getString(R.string.current_size_) + " " + String.valueOf(i) + "%");
             }
 
             @Override
@@ -187,6 +201,7 @@ public class DrawingActivity extends AppCompatActivity {
                 if(b) {
                     settings.setSelectedBrush(Brushes.PENCIL);
                     settings.setSelectedBrushSize(size.getProgress() / 100.0f);
+                    current_utility.setText(getString(R.string.pencil));
                 }
             }
         });
@@ -197,6 +212,7 @@ public class DrawingActivity extends AppCompatActivity {
                 if(b) {
                     settings.setSelectedBrush(Brushes.ERASER);
                     settings.setSelectedBrushSize(size.getProgress() / 100.0f);
+                    current_utility.setText(getString(R.string.eraser));
                 }
             }
         });
@@ -207,6 +223,7 @@ public class DrawingActivity extends AppCompatActivity {
                 if(b) {
                     settings.setSelectedBrush(Brushes.AIR_BRUSH);
                     settings.setSelectedBrushSize(size.getProgress() / 100.0f);
+                    current_utility.setText(getString(R.string.air_brush));
                 }
             }
         });
@@ -217,6 +234,7 @@ public class DrawingActivity extends AppCompatActivity {
                 if(b) {
                     settings.setSelectedBrush(Brushes.CALLIGRAPHY);
                     settings.setSelectedBrushSize(size.getProgress() / 100.0f);
+                    current_utility.setText(getString(R.string.calligraphy));
                 }
             }
         });
@@ -227,11 +245,17 @@ public class DrawingActivity extends AppCompatActivity {
                 if(b) {
                     settings.setSelectedBrush(Brushes.PEN);
                     settings.setSelectedBrushSize(size.getProgress() / 100.0f);
+                    current_utility.setText(getString(R.string.pen));
                 }
             }
         });
 
-        //Hintergrund
+        if(getIntent().getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, DrawingActivity.UTILITIY_PENCIL) == DrawingActivity.UTILITIY_ERASER) eraser.setChecked(true);
+        if(getIntent().getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, DrawingActivity.UTILITIY_PENCIL) == DrawingActivity.UTILITIY_AIR_BRUSH) airbrush.setChecked(true);
+        if(getIntent().getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, DrawingActivity.UTILITIY_PENCIL) == DrawingActivity.UTILITIY_CALLIGRAPHY) calligraphy.setChecked(true);
+        if(getIntent().getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, DrawingActivity.UTILITIY_PENCIL) == DrawingActivity.UTILITIY_PEN) pen.setChecked(true);
+
+        //Background
         background_color = findViewById(R.id.background_color);
         background_color_preview = findViewById(R.id.background_color_preview);
         choose_background_color = findViewById(R.id.choose_background_color);
@@ -273,15 +297,15 @@ public class DrawingActivity extends AppCompatActivity {
         choose_background_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FilePickerBuilder.getInstance()
-                        .setMaxCount(1)
-                        .enableCameraSupport(true)
-                        .enableVideoPicker(false)
-                        .pickPhoto(DrawingActivity.this);
+                if (ContextCompat.checkSelfPermission(DrawingActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                    chooseBackgroundImage();
+                } else {
+                    ActivityCompat.requestPermissions(DrawingActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQ_READ_EXTERNAL_STORAGE);
+                }
             }
         });
 
-        //Bild leeren
+        //Clear image
         clear_image = findViewById(R.id.clear);
         clear_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -290,9 +314,12 @@ public class DrawingActivity extends AppCompatActivity {
             }
         });
 
-        Toast toast = Toast.makeText(this,getString(R.string.drawing_instructions), Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.show();
+        //Show toast
+        if(i.hasExtra(DrawingActivityBuilder.TOAST_ENABLED) && i.getBooleanExtra(DrawingActivityBuilder.TOAST_ENABLED, true)) {
+            Toast toast = Toast.makeText(this,getString(R.string.drawing_instructions), Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        }
     }
 
     @Override
@@ -323,7 +350,8 @@ public class DrawingActivity extends AppCompatActivity {
             } catch (Exception e) {}
 
             Intent i = new Intent();
-            i.putExtra("ImagePath", file.getAbsolutePath());
+            i.putExtra(DRAWING_PATH, file.getAbsolutePath());
+
             setResult(RESULT_OK, i);
             finish();
         } else if(id == R.id.action_undo) {
@@ -381,6 +409,14 @@ public class DrawingActivity extends AppCompatActivity {
         d.show();
     }
 
+    private void chooseBackgroundImage() {
+        FilePickerBuilder.getInstance()
+                .setMaxCount(1)
+                .enableCameraSupport(true)
+                .enableVideoPicker(false)
+                .pickPhoto(DrawingActivity.this);
+    }
+
     private void finishWarning() {
         if(!drawing_view.isUndoStackEmpty()) {
             if (!pressedOnce) {
@@ -433,6 +469,12 @@ public class DrawingActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == REQ_READ_EXTERNAL_STORAGE && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) chooseBackgroundImage();
+    }
+
     private Bitmap loadImageFromPath(String path) {
         Bitmap b = null;
         try{
@@ -447,5 +489,9 @@ public class DrawingActivity extends AppCompatActivity {
         Color.colorToHSV(color, hsv);
         hsv[2] *= 0.8f;
         return Color.HSVToColor(hsv);
+    }
+
+    public static DrawingActivity getInstance() {
+        return new DrawingActivity();
     }
 }
