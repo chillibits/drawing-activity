@@ -144,7 +144,6 @@
                         android:id="@+id/utility_pencil"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:checked="true"
                         android:text="@string/pencil"/>
 
                     <RadioButton
@@ -169,6 +168,7 @@
                         android:id="@+id/utility_pen"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:checked="true"
                         android:text="@string/pen"/>
                 </RadioGroup>
 

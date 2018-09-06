@@ -27,9 +27,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DrawingActivityBuilder.getInstance(MainActivity.this)
-                        .enableToast(false)
-                        .setTitle(getString(R.string.app_name))
-                        .setDefaultUtility(DrawingActivity.UTILITIY_CALLIGRAPHY)
                         .draw(REQ_DRAWING);
             }
         });

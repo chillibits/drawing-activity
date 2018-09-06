@@ -51,7 +51,7 @@ public class DrawingActivity extends AppCompatActivity {
 
     //Constants
     private final int IMAGE_COMPRESSION_QUALITY = 85;
-    private final int REQ_READ_EXTERNAL_STORAGE = 1;
+    private final int REQ_WRITE_EXTERNAL_STORAGE = 1;
     public static final String DRAWING_PATH = "DrawingPath";
     public static final int UTILITIY_PENCIL = 1;
     public static final int UTILITIY_ERASER = 2;
@@ -142,7 +142,7 @@ public class DrawingActivity extends AppCompatActivity {
         //Initialize Preview
         color_preview = findViewById(R.id.color_preview);
         current_utility = findViewById(R.id.current_utility);
-        current_utility.setText(getString(R.string.current_utility_) + " " + getString(R.string.pencil));
+        current_utility.setText(getString(R.string.current_utility_) + " " + getString(R.string.pen));
         current_size = findViewById(R.id.current_size);
         current_size.setText(getString(R.string.current_size_) + " 25%");
         arrow = findViewById(R.id.arrow);
@@ -297,10 +297,10 @@ public class DrawingActivity extends AppCompatActivity {
         choose_background_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ContextCompat.checkSelfPermission(DrawingActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                if (ContextCompat.checkSelfPermission(DrawingActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                     chooseBackgroundImage();
                 } else {
-                    ActivityCompat.requestPermissions(DrawingActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQ_READ_EXTERNAL_STORAGE);
+                    ActivityCompat.requestPermissions(DrawingActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQ_WRITE_EXTERNAL_STORAGE);
                 }
             }
         });
@@ -315,7 +315,13 @@ public class DrawingActivity extends AppCompatActivity {
         });
 
         //Show toast
-        if(i.hasExtra(DrawingActivityBuilder.TOAST_ENABLED) && i.getBooleanExtra(DrawingActivityBuilder.TOAST_ENABLED, true)) {
+        if(i.hasExtra(DrawingActivityBuilder.TOAST_ENABLED)) {
+            if(i.getBooleanExtra(DrawingActivityBuilder.TOAST_ENABLED, true)) {
+                Toast toast = Toast.makeText(this,getString(R.string.drawing_instructions), Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
+        } else {
             Toast toast = Toast.makeText(this,getString(R.string.drawing_instructions), Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
@@ -472,7 +478,7 @@ public class DrawingActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode == REQ_READ_EXTERNAL_STORAGE && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) chooseBackgroundImage();
+        if(requestCode == REQ_WRITE_EXTERNAL_STORAGE && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) chooseBackgroundImage();
     }
 
     private Bitmap loadImageFromPath(String path) {
