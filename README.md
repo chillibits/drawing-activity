@@ -6,7 +6,7 @@
 
 A lightweight android library for including a drawing experience to your android app.
 
-<img src="https://mrgames-server.de/files/github/AnimatedDemo.gif">
+<img src="https://mrgames-server.de/files/github/animated_demo.gif">
 
 # Installation
 
