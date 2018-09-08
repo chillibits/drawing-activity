@@ -10,7 +10,7 @@ A lightweight android library for including a drawing experience to your android
 
 # Installation
 
-Until now, the library is only available in JitPack. Please add this code to your build.gradle file on project level:
+Up to now, the library is only available in JitPack. Please add this code to your build.gradle file on project level:
 ```gradle
 allprojects {
   repositories {
@@ -19,26 +19,26 @@ allprojects {
   }
 }
 ```
-To load the library into your project use this code in the build.gradle file in the app module:
+To load the library into your project use this code in the build.gradle file within the app module:
 ```gradle
   implementation 'com.github.mrgames13:DrawingActivity:1.0.1'
 ```
 # Usage
-To use the DrawingActivity include this in a event function:
+To use the DrawingActivity, include this code in a event function:
 ```android
   DrawingActivityBuilder.getInstance(MainActivity.this)
                         .draw(REQ_DRAWING);
 ```
 Thus `REQ_DRAWING` is a constant of type integer to specify the request code for the returning intent for the `onActivityResult` method.
 
-You are able to catch the event of exiting the DrawingActivty by using the `onActivityResult` method:
+You are able to catch the event of finishing the drawing and exiting the DrawingActivty by using the `onActivityResult` method like that:
 ```android
 if(requestCode == REQ_DRAWING && resultCode == RESULT_OK && data != null) {
     String drawing_path = data.getStringExtra(DrawingActivity.DRAWING_PATH);
     Toast.makeText(this, drawing_path, Toast.LENGTH_LONG).show();
 }
 ```
-Replace the Toast with your own code, processing the returned image.
+Replace the Toast with your own code, processing the returned image (Loading the image into your app, sharing it, cropping it, etc.).
 
 You can customize the appearance of the DrawingActivity using following arguments when building the Activity with `DrawingActivityBuilder`:
 
@@ -54,5 +54,8 @@ This library uses following third party libraries:
 * [ColorPickerPreference](https://github.com/attenzione/android-ColorPickerPreference)
 * [Android FilePicker](https://github.com/DroidNinja/Android-FilePicker)
 * [Glide](https://github.com/bumptech/glide)
+
+
+Thank you for using the DrawingActivity!
 
 © M&R Games 2018 (Designed and developed by Marc Auberer in 2018)
