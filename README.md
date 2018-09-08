@@ -10,6 +10,18 @@ A lightweight android library for including a drawing experience to your android
 
 #Installation
 
-> implementation 'com.github.mrgames13:DrawingActivity:1.0.1'
+Until now, the library is only available in JitPack. Please add this code to your build.gradle file on project level:
+```
+allprojects {
+  repositories {
+    ...
+    maven { url 'https://jitpack.io' }
+  }
+}
+```
+To load the library into your project use this code in the build.gradle file in the app module:
+```
+implementation 'com.github.mrgames13:DrawingActivity:1.0.1'
+```
 
 © M&R Games 2018 (Designed and developed by Marc Auberer in 2018)
