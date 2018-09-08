@@ -6,7 +6,7 @@
 
 A lightweight android library for including a drawing experience to your android app.
 
-![DemoAnimation](AnimatedDemo.gif){:height="720px" width="480px"}
+![DemoAnimation](DrawingActivity.gif)
 
 
 
