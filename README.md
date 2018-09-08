@@ -1,4 +1,4 @@
-#Android DrawingActivity
+# Android DrawingActivity
 
 [![API](https://img.shields.io/badge/API-19%2B-red.svg?style=flat)](https://android-arsenal.com/api?level=19)
 [![](https://jitpack.io/v/mrgames13/DrawingActivity.svg)](https://jitpack.io/#mrgames13/DrawingActivity)
@@ -8,7 +8,7 @@ A lightweight android library for including a drawing experience to your android
 
 ![DemoAnimation](DrawingActivity.gif)
 
-#Installation
+# Installation
 
 Until now, the library is only available in JitPack. Please add this code to your build.gradle file on project level:
 ```gradle
@@ -23,7 +23,7 @@ To load the library into your project use this code in the build.gradle file in 
 ```gradle
   implementation 'com.github.mrgames13:DrawingActivity:1.0.1'
 ```
-#Usage
+# Usage
 To use the DrawingActivity include this in a event function:
 ```android
   DrawingActivityBuilder.getInstance(MainActivity.this)
