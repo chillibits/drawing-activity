@@ -42,12 +42,11 @@ Replace the Toast with your own code, processing the returned image.
 
 You can customize the appearance of the DrawingActivity using following arguments when building the Activity with `DrawingActivityBuilder`:
 
-Method | Description
+Method &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Description
 -------|------------
-<img width=200/>|<img width=500/>
-`enableToast(boolean enabled)` | Enables or disables the toast on Activity startup (You can see the toast on the animated demo above).
-`setTitle(String title)` | This method sets the title in the toolbar at the top of the DrawingActivity.
-`setDefaultUtility(int utility)` | You can set the default utility which will be selected at the startup of the Activity. You have to pass an integer argument to this method. The utility constants can be accessed by using e.g. `DrawingActivity.UTILITY_PENCIL` or `DrawingActivity.UTILITY_AIR_BRUSH`.
+enableToast(boolean enabled) | Enables or disables the toast on Activity startup (You can see the toast on the animated demo above).
+setTitle(String title) | This method sets the title in the toolbar at the top of the DrawingActivity.
+setDefaultUtility(int utility) | You can set the default utility which will be selected at the startup of the Activity. You have to pass an integer argument to this method. The utility constants can be accessed by using e.g. `DrawingActivity.UTILITY_PENCIL` or `DrawingActivity.UTILITY_AIR_BRUSH`.
 
 This library uses following third party libraries:
 * [DrawingView](https://github.com/Raed-Mughaus/DrawingView)
