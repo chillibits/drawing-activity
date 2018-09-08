@@ -42,7 +42,7 @@ Replace the Toast with your own code, processing the returned image.
 
 You can customize the appearance of the DrawingActivity using following arguments when building the Activity with `DrawingActivityBuilder`:
 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Method &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Description
+Method | Description
 -------|------------
 enableToast(boolean enabled) | Enables or disables the toast on Activity startup (You can see the toast on the animated demo above).
 setTitle(String title) | This method sets the title in the toolbar at the top of the DrawingActivity.
