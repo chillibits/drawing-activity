@@ -8,6 +8,8 @@ A lightweight android library for including a drawing experience to your android
 
 ![DemoAnimation](DrawingActivity.gif)
 
+#Installation
 
+> implementation 'com.github.mrgames13:DrawingActivity:1.0.1'
 
 © M&R Games 2018 (Designed and developed by Marc Auberer in 2018)
