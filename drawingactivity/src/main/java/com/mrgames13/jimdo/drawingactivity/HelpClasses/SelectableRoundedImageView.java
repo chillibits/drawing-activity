@@ -23,13 +23,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
 
 import com.mrgames13.jimdo.drawingactivity.R.styleable;
-
-import androidx.appcompat.widget.AppCompatImageView;
 
 public class SelectableRoundedImageView extends AppCompatImageView {
     public static final String TAG = "SelectableRoundedImageView";
