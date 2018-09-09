@@ -21,7 +21,7 @@ allprojects {
 ```
 To load the library into your project use this code in the build.gradle file within the app module:
 ```gradle
-  implementation 'com.github.mrgames13:DrawingActivity:1.0.1'
+  implementation 'com.github.mrgames13:DrawingActivity:1.0.3'
 ```
 # Usage
 To use the DrawingActivity, include this code in a event function:
