@@ -6,7 +6,7 @@
 
 A lightweight android library for including a drawing experience to your android app.
 
-![1](https://mrgames-server.de/files/github/1_small.png) ![2](https://mrgames-server.de/files/github/2_small.png) ![3](https://mrgames-server.de/files/github/3_small.png)
+![1](https://mrgames-server.de/files/github/DrawingActivity/1_small.png) ![2](https://mrgames-server.de/files/github/DrawingActivity/2_small.png) ![3](https://mrgames-server.de/files/github/DrawingActivity/3_small.png)
 
 # Installation
 
