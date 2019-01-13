@@ -58,4 +58,4 @@ This library uses following third party libraries:
 
 Thank you for using the DrawingActivity!
 
-© M&R Games 2018 (Designed and developed by Marc Auberer in 2018)
+© M&R Games 2018-2019 (Designed and developed by Marc Auberer in 2018)
