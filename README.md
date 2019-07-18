@@ -4,13 +4,13 @@
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-DrawingActivity-blue.svg?style=flat)](https://android-arsenal.com/details/1/7098)
 [![API](https://img.shields.io/badge/API-19%2B-red.svg?style=flat)](https://android-arsenal.com/api?level=19)
 
-A lightweight android library for including a drawing experience to your android app.
+A lightweight android library for including a drawing experience to your Android app.
 
 ![1](https://mrgames-server.de/files/github/DrawingActivity/1_small.png) ![2](https://mrgames-server.de/files/github/DrawingActivity/2_small.png) ![3](https://mrgames-server.de/files/github/DrawingActivity/3_small.png)
 
 # Installation
 
-Up to now, the library is only available in JitPack. Please add this code to your build.gradle file on project level:
+Up to now, the library is only available on JitPack. Please add this code to your build.gradle file on project level:
 ```gradle
 allprojects {
   repositories {
@@ -24,21 +24,21 @@ To load the library into your project use this code in the build.gradle file wit
   implementation 'com.github.mrgames13:DrawingActivity:1.0.4'
 ```
 # Usage
-To use the DrawingActivity, include this code in a event function:
+To use the DrawingActivity, include this code in an event function:
 ```android
   DrawingActivityBuilder.getInstance(MainActivity.this)
                         .draw(REQ_DRAWING);
 ```
-Thus `REQ_DRAWING` is a constant of type integer to specify the request code for the returning intent for the `onActivityResult` method.
+Thus `REQ_DRAWING` is a constant of type integer to specify the request code of the returning intent for the `onActivityResult` method.
 
-You are able to catch the event of finishing the drawing and exiting the DrawingActivty by using the `onActivityResult` method like that:
+You are able to catch the event of finishing the drawing and closing the DrawingActivty by using the `onActivityResult` method like that:
 ```android
 if(requestCode == REQ_DRAWING && resultCode == RESULT_OK && data != null) {
     String drawing_path = data.getStringExtra(DrawingActivity.DRAWING_PATH);
     Toast.makeText(this, drawing_path, Toast.LENGTH_LONG).show();
 }
 ```
-Replace the Toast with your own code, processing the returned image (Loading the image into your app, sharing it, cropping it, etc.).
+Replace the Toast with your own code, processing the returned image (loading the image into your app, sharing it, cropping it, etc.).
 
 You can customize the appearance of the DrawingActivity using following arguments when building the Activity with `DrawingActivityBuilder`:
 
