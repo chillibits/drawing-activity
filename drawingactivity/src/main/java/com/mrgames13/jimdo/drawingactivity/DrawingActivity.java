@@ -11,12 +11,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -29,6 +23,13 @@ import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.raed.drawingview.BrushView;
 import com.raed.drawingview.DrawingView;
@@ -49,7 +50,7 @@ import droidninja.filepicker.FilePickerConst;
 
 public class DrawingActivity extends AppCompatActivity {
 
-    //Constants
+    // Constants
     private final int IMAGE_COMPRESSION_QUALITY = 85;
     private final int REQ_WRITE_EXTERNAL_STORAGE = 1;
     public static final String DRAWING_PATH = "DrawingPath";
@@ -59,9 +60,8 @@ public class DrawingActivity extends AppCompatActivity {
     public static final int UTILITIY_CALLIGRAPHY = 4;
     public static final int UTILITIY_PEN = 5;
 
-    //Variables as objects
+    // Variables as objects
     private Resources res;
-    private Toolbar toolbar;
     private Menu menu;
     private SlidingUpPanelLayout slidingUpPanelLayout;
     private DrawingView drawing_view;
@@ -69,27 +69,17 @@ public class DrawingActivity extends AppCompatActivity {
     private TextView current_utility;
     private TextView current_size;
     private ImageView arrow;
-    private BrushView brush_view;
     private ImageView color_preview_slide;
-    private Button choose_color;
     private SeekBar size;
-    private RadioButton pencil;
-    private RadioButton eraser;
-    private RadioButton airbrush;
-    private RadioButton calligraphy;
-    private RadioButton pen;
-    private RadioButton background_color;
-    private RadioButton background_image;
     private ImageView background_color_preview;
     private Button choose_background_color;
     private ImageView background_image_preview;
     private Button choose_background_image;
-    private Button clear_image;
     private ColorPickerDialog color_picker;
     private int current_color = Color.BLACK;
-    private int current_background_color = Color.parseColor("#eeeeee");
+    private int current_background_color = Color.parseColor("#EEEEEE");
 
-    //Variables
+    // Variables
     private boolean pressedOnce;
 
     @Override
@@ -104,7 +94,7 @@ public class DrawingActivity extends AppCompatActivity {
         res = getResources();
 
         //Initialize Toolbar
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle((i.hasExtra(DrawingActivityBuilder.TITLE) && !i.getStringExtra(DrawingActivityBuilder.TITLE).equals("")) ? i.getStringExtra(DrawingActivityBuilder.TITLE) : getString(R.string.drawing));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -154,13 +144,13 @@ public class DrawingActivity extends AppCompatActivity {
         });
 
         //Initialize BrushView
-        brush_view = findViewById(R.id.brush_view);
+        BrushView brush_view = findViewById(R.id.brush_view);
         brush_view.setDrawingView(drawing_view);
 
         final BrushSettings settings = drawing_view.getBrushSettings();
 
         color_preview_slide = findViewById(R.id.color_preview_slide);
-        choose_color = findViewById(R.id.choose_color);
+        Button choose_color = findViewById(R.id.choose_color);
         choose_color.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -184,7 +174,7 @@ public class DrawingActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 settings.setSelectedBrushSize(i / 100.0f);
-                current_size.setText(res.getString(R.string.current_size_) + " " + String.valueOf(i) + "%");
+                current_size.setText(res.getString(R.string.current_size_) + " " + i + "%");
             }
 
             @Override
@@ -194,7 +184,7 @@ public class DrawingActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
-        pencil = findViewById(R.id.utility_pencil);
+        RadioButton pencil = findViewById(R.id.utility_pencil);
         pencil.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -205,7 +195,7 @@ public class DrawingActivity extends AppCompatActivity {
                 }
             }
         });
-        eraser = findViewById(R.id.utility_eraser);
+        RadioButton eraser = findViewById(R.id.utility_eraser);
         eraser.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -216,7 +206,7 @@ public class DrawingActivity extends AppCompatActivity {
                 }
             }
         });
-        airbrush = findViewById(R.id.utility_airbrush);
+        RadioButton airbrush = findViewById(R.id.utility_airbrush);
         airbrush.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -227,7 +217,7 @@ public class DrawingActivity extends AppCompatActivity {
                 }
             }
         });
-        calligraphy = findViewById(R.id.utility_calligraphy);
+        RadioButton calligraphy = findViewById(R.id.utility_calligraphy);
         calligraphy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -238,7 +228,7 @@ public class DrawingActivity extends AppCompatActivity {
                 }
             }
         });
-        pen = findViewById(R.id.utility_pen);
+        RadioButton pen = findViewById(R.id.utility_pen);
         pen.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -256,10 +246,10 @@ public class DrawingActivity extends AppCompatActivity {
         if(getIntent().getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, DrawingActivity.UTILITIY_PENCIL) == DrawingActivity.UTILITIY_PEN) pen.setChecked(true);
 
         //Background
-        background_color = findViewById(R.id.background_color);
+        RadioButton background_color = findViewById(R.id.background_color);
         background_color_preview = findViewById(R.id.background_color_preview);
         choose_background_color = findViewById(R.id.choose_background_color);
-        background_image = findViewById(R.id.background_image);
+        RadioButton background_image = findViewById(R.id.background_image);
         background_image_preview = findViewById(R.id.background_image_preview);
         choose_background_image = findViewById(R.id.choose_background_image);
         background_color.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -306,11 +296,11 @@ public class DrawingActivity extends AppCompatActivity {
         });
 
         //Clear image
-        clear_image = findViewById(R.id.clear);
+        Button clear_image = findViewById(R.id.clear);
         clear_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clear();
+                clearDrawing(true);
             }
         });
 
@@ -353,7 +343,7 @@ public class DrawingActivity extends AppCompatActivity {
                 b.compress(Bitmap.CompressFormat.JPEG, IMAGE_COMPRESSION_QUALITY, out);
                 out.flush();
                 out.close();
-            } catch (Exception e) {}
+            } catch (Exception ignored) {}
 
             Intent i = new Intent();
             i.putExtra(DRAWING_PATH, file.getAbsolutePath());
@@ -393,26 +383,33 @@ public class DrawingActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+    public void clearDrawing(boolean warning) {
+        if(warning) {
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.drawing)
+                    .setMessage(R.string.warning_clear)
+                    .setNegativeButton(R.string.cancel, null)
+                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            clear();
+                        }
+                    })
+                    .show();
+        } else {
+            clear();
+        }
+    }
+
     private void clear() {
-        AlertDialog d = new AlertDialog.Builder(this)
-                .setTitle(R.string.drawing)
-                .setMessage(R.string.warning_clear)
-                .setNegativeButton(R.string.cancel, null)
-                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        drawing_view.clear();
-                        menu.findItem(R.id.action_undo).setEnabled(false);
-                        menu.findItem(R.id.action_undo).getIcon().setAlpha(130);
-                        menu.findItem(R.id.action_redo).setEnabled(false);
-                        menu.findItem(R.id.action_redo).getIcon().setAlpha(130);
-                        menu.findItem(R.id.action_done).setEnabled(false);
-                        menu.findItem(R.id.action_done).getIcon().setAlpha(130);
-                        slidingUpPanelLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-                    }
-                })
-                .create();
-        d.show();
+        drawing_view.clear();
+        menu.findItem(R.id.action_undo).setEnabled(false);
+        menu.findItem(R.id.action_undo).getIcon().setAlpha(130);
+        menu.findItem(R.id.action_redo).setEnabled(false);
+        menu.findItem(R.id.action_redo).getIcon().setAlpha(130);
+        menu.findItem(R.id.action_done).setEnabled(false);
+        menu.findItem(R.id.action_done).getIcon().setAlpha(130);
+        slidingUpPanelLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
     }
 
     private void chooseBackgroundImage() {
@@ -450,7 +447,7 @@ public class DrawingActivity extends AppCompatActivity {
             final ArrayList<String> paths = data.getStringArrayListExtra(FilePickerConst.KEY_SELECTED_MEDIA);
             final Bitmap b = loadImageFromPath(paths.get(0));
 
-            AlertDialog d = new AlertDialog.Builder(this)
+            new AlertDialog.Builder(this)
                     .setTitle(R.string.drawing)
                     .setMessage(R.string.warning_background_image)
                     .setNegativeButton(R.string.cancel, null)
@@ -470,8 +467,7 @@ public class DrawingActivity extends AppCompatActivity {
                             slidingUpPanelLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                         }
                     })
-                    .create();
-            d.show();
+                    .show();
         }
     }
 
@@ -486,7 +482,7 @@ public class DrawingActivity extends AppCompatActivity {
         try{
             InputStream in = new FileInputStream(path);
             b = BitmapFactory.decodeStream(in);
-        } catch (Exception e) {}
+        } catch (Exception ignored) {}
         return b;
     }
 

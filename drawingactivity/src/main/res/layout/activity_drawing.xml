@@ -13,7 +13,7 @@
     sothree:umanoScrollableView="@id/scrollview"
     tools:context=".DrawingActivity" >
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -27,14 +27,14 @@
             app:brush="pen"
             app:brush_color="#000"
             app:drawing_background_color="#eee" />
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="5dp">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/color_preview"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -46,10 +46,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:textSize="17sp"
             android:textStyle="bold"
-            android:layout_toRightOf="@+id/color_preview"/>
+            android:layout_toEndOf="@+id/color_preview"/>
 
         <TextView
             android:id="@+id/current_size"
@@ -57,20 +57,21 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/current_utility"
             android:layout_marginTop="3dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:textSize="17sp"
-            android:layout_toRightOf="@+id/color_preview"/>
+            android:layout_toEndOf="@+id/color_preview"/>
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/arrow"
             android:layout_width="40dp"
             android:layout_height="60dp"
             android:gravity="center"
             app:srcCompat="@drawable/arrow_drop_up_black"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:clickable="true"
             android:tint="@color/gray_light"
-            android:background="?attr/selectableItemBackgroundBorderless"/>
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:focusable="true" />
 
         <RelativeLayout
             android:id="@+id/seperator01"
@@ -104,9 +105,9 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/color_preview_slide"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
@@ -120,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/choose_color"
                     android:layout_marginTop="5dp"
-                    android:layout_toRightOf="@+id/color_preview_slide"
+                    android:layout_toEndOf="@+id/color_preview_slide"
                     android:layout_alignTop="@+id/color_preview_slide"/>
 
                 <SeekBar
@@ -198,9 +199,9 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp">
+                        android:layout_marginStart="30dp">
 
-                        <ImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/background_color_preview"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
@@ -211,7 +212,7 @@
                             android:id="@+id/choose_background_color"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_toRightOf="@+id/background_color_preview"
+                            android:layout_toEndOf="@+id/background_color_preview"
                             android:layout_alignTop="@+id/background_color_preview"
                             android:text="@string/choose_color"/>
                     </RelativeLayout>
@@ -220,13 +221,12 @@
                         android:id="@+id/background_image"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/background_image"
-                        android:layout_below="@+id/background_color_preview"/>
+                        android:text="@string/background_image" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp">
+                        android:layout_marginStart="30dp">
 
                         <com.mrgames13.jimdo.drawingactivity.HelpClasses.SelectableRoundedImageView
                             android:id="@+id/background_image_preview"
@@ -237,7 +237,7 @@
                             android:id="@+id/choose_background_image"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_toRightOf="@+id/background_image_preview"
+                            android:layout_toEndOf="@+id/background_image_preview"
                             android:layout_alignTop="@+id/background_image_preview"
                             android:text="@string/choose_image"
                             android:enabled="false"/>
