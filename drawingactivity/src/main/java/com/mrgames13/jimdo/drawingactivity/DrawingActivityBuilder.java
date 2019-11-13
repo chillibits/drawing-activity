@@ -5,16 +5,14 @@ import android.content.Intent;
 
 public class DrawingActivityBuilder {
 
-    //Constants
-    public static final String TOAST_ENABLED = "ToastEnabled";
-    public static final String TITLE = "Title";
-    public static final String DEFAULT_UTILITY = "DefaultUtility";
+    // Constants
+    static final String TOAST_ENABLED = "ToastEnabled";
+    static final String TITLE = "Title";
+    static final String DEFAULT_UTILITY = "DefaultUtility";
 
-    //Variables as objects
+    // Variables as objects
     private Activity context;
     private Intent intent;
-
-    //Variables
 
     private DrawingActivityBuilder(Activity context) {
         this.context = context;

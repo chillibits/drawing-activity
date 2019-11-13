@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.mrgames13.jimdo.drawingactivityexample"
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
     }
@@ -19,7 +19,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation project(':drawingactivity')
-    //implementation 'com.github.mrgames13:DrawingActivity:1.0.3'
+    //implementation 'com.github.mrgames13:DrawingActivity:1.0.4'
 }
