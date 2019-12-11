@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 29
@@ -11,15 +13,18 @@ android {
     }
     buildTypes {
         release {
-            //minifyEnabled true
-            //shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }
 
 dependencies {
+    implementation 'androidx.core:core-ktx:1.2.0-rc01'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
     implementation project(':drawingactivity')
-    //implementation 'com.github.mrgames13:DrawingActivity:1.0.4'
+}
+repositories {
+    mavenCentral()
 }
