@@ -8,8 +8,8 @@
     <string name="eraser">Eraser</string>
     <string name="air_brush">Air brush</string>
     <string name="pen">Pen</string>
-    <string name="current_utility_">Utility:</string>
-    <string name="current_size_">Size:</string>
+    <string name="current_utility">Utility: %s</string>
+    <string name="current_size">Size: %s%</string>
     <string name="background_color">Background color</string>
     <string name="choose_color">Choose color</string>
     <string name="choose_image">Choose image</string>
@@ -23,4 +23,5 @@
     <string name="cancel">Cancel</string>
     <string name="yes">Yes</string>
     <string name="press_again_to_discard_drawing">Tap once again to discard the drawing</string>
+    <string name="error_loading_image">Error loading image</string>
 </resources>

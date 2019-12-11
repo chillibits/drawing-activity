@@ -6,7 +6,9 @@
 
 A lightweight android library for including a drawing experience to your Android app.
 
-![1](https://mrgames-server.de/files/github/DrawingActivity/1_small.png) ![2](https://mrgames-server.de/files/github/DrawingActivity/2_small.png) ![3](https://mrgames-server.de/files/github/DrawingActivity/3_small.png)
+![1](https://mrgames-server.de/files/github/DrawingActivity/1_small.png)
+![2](https://mrgames-server.de/files/github/DrawingActivity/2_small.png)
+![3](https://mrgames-server.de/files/github/DrawingActivity/3_small.png)
 
 # Installation
 
@@ -21,8 +23,9 @@ allprojects {
 ```
 To load the library into your project use this code in the build.gradle file within the app module:
 ```gradle
-  implementation 'com.github.mrgames13:DrawingActivity:1.0.4'
+  implementation 'com.github.mrgames13:DrawingActivity:2.0.0'
 ```
+
 # Usage
 To use the DrawingActivity, include this code in an event function:
 ```android
@@ -42,11 +45,11 @@ Replace the Toast with your own code, processing the returned image (loading the
 
 You can customize the appearance of the DrawingActivity using following arguments when building the Activity with `DrawingActivityBuilder`:
 
-Method | Description
--------|------------
-enableToast(boolean enabled) | Enables or disables the toast on Activity startup (You can see the toast on the animated demo above).
-setTitle(String title) | This method sets the title in the toolbar at the top of the DrawingActivity.
-setDefaultUtility(int utility) | You can set the default utility which will be selected at the startup of the Activity. You have to pass an integer argument to this method. The utility constants can be accessed by using e.g. `DrawingActivity.UTILITY_PENCIL` or `DrawingActivity.UTILITY_AIR_BRUSH`.
+| Method | Description |
+|--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| enableToast(boolean enabled) | Enables or disables the toast on Activity startup (You can see the toast on the animated demo above). |
+| setTitle(String title) | This method sets the title in the toolbar at the top of the DrawingActivity. |
+| setDefaultUtility(int utility) | You can set the default utility which will be selected at the startup of the Activity. You have to pass an integer argument to this method. The utility constants can be accessed by using e.g. `DrawingActivity.UTILITY_PENCIL` or `DrawingActivity.UTILITY_AIR_BRUSH`. |
 
 This library uses following third party libraries:
 * [DrawingView](https://github.com/Raed-Mughaus/DrawingView)

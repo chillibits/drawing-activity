@@ -22,8 +22,9 @@
         <com.raed.drawingview.DrawingView
             android:id="@+id/drawing_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar"
+            android:layout_height="0dp"
+            sothree:layout_constraintTop_toBottomOf="@+id/toolbar"
+            sothree:layout_constraintBottom_toBottomOf="parent"
             app:brush="pen"
             app:brush_color="#000"
             app:drawing_background_color="#eee" />
@@ -228,10 +229,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp">
 
-                        <com.mrgames13.jimdo.drawingactivity.HelpClasses.SelectableRoundedImageView
+                        <com.mikhaellopez.circularimageview.CircularImageView
                             android:id="@+id/background_image_preview"
                             android:layout_width="50dp"
-                            android:layout_height="50dp" />
+                            android:layout_height="50dp"
+                            app:civ_border="false"/>
 
                         <Button
                             android:id="@+id/choose_background_image"
