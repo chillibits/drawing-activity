@@ -18,7 +18,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         open_drawing_activity.setOnClickListener {
-            DrawingActivityBuilder.getInstance(this@MainActivity).draw(REQ_DRAWING)
+            DrawingActivityBuilder.getInstance(this@MainActivity)
+                .enableToast(true)
+                .setTitle(R.string.drawing)
+                .setDefaultUtility(DrawingActivity.UTILITIY_PEN)
+                .draw(REQ_DRAWING)
         }
     }
 
