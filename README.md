@@ -25,6 +25,7 @@ To load the library into your project use this code in the build.gradle file wit
 ```gradle
   implementation 'com.github.mrgames13:DrawingActivity:2.0.0'
 ```
+
 # Usage
 To use the DrawingActivity, include this code in an event function:
 ```android
