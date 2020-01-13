@@ -23,7 +23,7 @@ allprojects {
 ```
 To load the library into your project use this code in the build.gradle file within the app module:
 ```gradle
-  implementation 'com.github.ChilliBits:DrawingActivity:2.0.0'
+  implementation 'com.github.ChilliBits:drawing-activity:2.0.0'
 ```
 
 # Usage
