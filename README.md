@@ -1,6 +1,6 @@
 # Android DrawingActivity
 
-[![](https://jitpack.io/v/chillibits/DrawingActivity.svg)](https://jitpack.io/#chillibits/DrawingActivity)
+[![](https://jitpack.io/v/ChilliBits/drawing-activity.svg)](https://jitpack.io/#ChilliBits/drawing-activity)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-DrawingActivity-blue.svg?style=flat)](https://android-arsenal.com/details/1/7098)
 [![API](https://img.shields.io/badge/API-19%2B-red.svg?style=flat)](https://android-arsenal.com/api?level=19)
 
