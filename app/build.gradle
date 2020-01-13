@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "com.mrgames13.jimdo.drawingactivityexample"
+        applicationId "com.chillibits.drawingactivityexample"
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 200
@@ -22,7 +22,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.2.0-rc01'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
     implementation project(':drawingactivity')
 }
 repositories {

@@ -1,4 +1,4 @@
-package com.mrgames13.jimdo.drawingactivity
+package com.chillibits.jimdo.drawingactivity
 
 import android.Manifest
 import android.app.Activity

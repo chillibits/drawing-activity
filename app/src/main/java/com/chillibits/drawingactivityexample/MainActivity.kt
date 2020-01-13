@@ -1,12 +1,12 @@
-package com.mrgames13.jimdo.drawingactivityexample
+package com.chillibits.drawingactivityexample
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.mrgames13.jimdo.drawingactivity.DrawingActivity
-import com.mrgames13.jimdo.drawingactivity.DrawingActivityBuilder
+import com.chillibits.jimdo.drawingactivity.DrawingActivity
+import com.chillibits.jimdo.drawingactivity.DrawingActivityBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
