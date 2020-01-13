@@ -23,14 +23,14 @@ allprojects {
 ```
 To load the library into your project use this code in the build.gradle file within the app module:
 ```gradle
-  implementation 'com.github.ChilliBits:drawing-activity:2.0.1'
+implementation 'com.github.ChilliBits:drawing-activity:2.0.2'
 ```
 
 # Usage
 To use the DrawingActivity, include this code in an event function:
 ```android
-  DrawingActivityBuilder.getInstance(MainActivity.this)
-                        .draw(REQ_DRAWING);
+DrawingActivityBuilder.getInstance(MainActivity.this)
+	.draw(REQ_DRAWING);
 ```
 Thus `REQ_DRAWING` is a constant of type integer to specify the request code of the returning intent for the `onActivityResult` method.
 

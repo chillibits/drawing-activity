@@ -1,4 +1,4 @@
-package com.chillibits.jimdo.drawingactivity
+package com.chillibits.drawingactivity
 
 import android.app.Activity
 import android.content.Intent

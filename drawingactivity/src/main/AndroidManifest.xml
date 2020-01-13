@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.chillibits.jimdo.drawingactivity">
+    package="com.chillibits.drawingactivity">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application>
         <activity
-            android:name="com.chillibits.jimdo.drawingactivity.DrawingActivity"
+            android:name="com.chillibits.drawingactivity.DrawingActivity"
             android:theme="@style/DrawingStyle"/>
     </application>
 
