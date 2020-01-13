@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © Marc Auberer 2020. All rights reserved
+  -->
+
 <resources>
     <declare-styleable name="SelectableRoundedImageView">
         <attr name="sriv_left_top_corner_radius" format="dimension" />
