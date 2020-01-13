@@ -1,14 +1,14 @@
 # Android DrawingActivity
 
-[![](https://jitpack.io/v/mrgames13/DrawingActivity.svg)](https://jitpack.io/#mrgames13/DrawingActivity)
+[![](https://jitpack.io/v/chillibits/DrawingActivity.svg)](https://jitpack.io/#chillibits/DrawingActivity)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-DrawingActivity-blue.svg?style=flat)](https://android-arsenal.com/details/1/7098)
 [![API](https://img.shields.io/badge/API-19%2B-red.svg?style=flat)](https://android-arsenal.com/api?level=19)
 
 A lightweight android library for including a drawing experience to your Android app.
 
-![1](https://mrgames-server.de/files/github/DrawingActivity/1_small.png)
-![2](https://mrgames-server.de/files/github/DrawingActivity/2_small.png)
-![3](https://mrgames-server.de/files/github/DrawingActivity/3_small.png)
+![1](https://chillibits.com/github-media/DrawingActivity/1_small.png)
+![2](https://chillibits.com/github-media/DrawingActivity/2_small.png)
+![3](https://chillibits.com/github-media/DrawingActivity/3_small.png)
 
 # Installation
 
@@ -23,7 +23,7 @@ allprojects {
 ```
 To load the library into your project use this code in the build.gradle file within the app module:
 ```gradle
-  implementation 'com.github.mrgames13:DrawingActivity:2.0.0'
+  implementation 'com.github.ChilliBits:DrawingActivity:2.0.0'
 ```
 
 # Usage
@@ -61,4 +61,4 @@ This library uses following third party libraries:
 
 Thank you for using the DrawingActivity!
 
-© M&R Games 2018-2019 (Designed and developed by Marc Auberer in 2018)
+© ChilliBits 2018-2020 (Designed and developed by Marc Auberer in 2018)
