@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        open_drawing_activity.setOnClickListener {
+        openDrawingActivity.setOnClickListener {
             DrawingActivityBuilder.getInstance(this@MainActivity)
                 .enableToast(true)
                 .setTitle(R.string.drawing)

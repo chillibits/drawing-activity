@@ -14,7 +14,7 @@ class DrawingActivityBuilder private constructor(private val activity: Activity)
     /**
      * Enables a toast with the caption 'Draw within the white area'.
      *
-     * @param enabled       Choose wether the toast is enabled or not
+     * @param enabled Choose whether the toast is enabled or not
      */
     fun enableToast(enabled: Boolean): DrawingActivityBuilder {
         intent.putExtra(TOAST_ENABLED, enabled)
@@ -24,7 +24,7 @@ class DrawingActivityBuilder private constructor(private val activity: Activity)
     /**
      * Sets the toolbar title of the DrawingActivity.
      *
-     * @param title       Title string
+     * @param title Title string
      */
     fun setTitle(title: String?): DrawingActivityBuilder {
         intent.putExtra(TITLE, title)
@@ -34,7 +34,7 @@ class DrawingActivityBuilder private constructor(private val activity: Activity)
     /**
      * Sets the toolbar title of the DrawingActivity.
      *
-     * @param titleResourceId       Title string resource id
+     * @param titleResourceId Title string resource id
      */
     fun setTitle(@StringRes titleResourceId: Int): DrawingActivityBuilder {
         intent.putExtra(TITLE, activity.getString(titleResourceId))
@@ -44,7 +44,7 @@ class DrawingActivityBuilder private constructor(private val activity: Activity)
     /**
      * Sets the utility at activity launch time.
      *
-     * @param defaultUtility       One of the following: DrawingActivity.UTILITIY_PEN,
+     * @param defaultUtility One of the following: DrawingActivity.UTILITIY_PEN,
      * DrawingActivity.UTILITIY_AIR_BRUSH, DrawingActivity.UTILITIY_CALLIGRAPHY,
      * DrawingActivity.UTILITIY_ERASER, DrawingActivity.UTILITIY_PENCIL
      */
@@ -56,7 +56,7 @@ class DrawingActivityBuilder private constructor(private val activity: Activity)
     /**
      * Launches the DrawingActivity. Let's draw!
      *
-     * @param       Request code to retreive the drawing result in onActivityResult
+     * @param requestCode Request code to retrieve the drawing result in onActivityResult
      */
     fun draw(requestCode: Int) {
         activity.startActivityForResult(intent, requestCode)
@@ -67,6 +67,8 @@ class DrawingActivityBuilder private constructor(private val activity: Activity)
         const val TOAST_ENABLED = "ToastEnabled"
         const val TITLE = "Title"
         const val DEFAULT_UTILITY = "DefaultUtility"
+
+        @JvmStatic
         fun getInstance(context: Activity): DrawingActivityBuilder = DrawingActivityBuilder(context)
     }
 }

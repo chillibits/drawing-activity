@@ -26,9 +26,9 @@ android {
 dependencies {
     // Base dependencies
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
-    implementation 'androidx.core:core-ktx:1.2.0-rc01'
+    implementation 'androidx.core:core-ktx:1.2.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // External dependencies
@@ -37,9 +37,6 @@ dependencies {
     implementation 'net.margaritov.preference.colorpicker.ColorPickerPreference:ColorPickerPreference:1.0.0'
     implementation 'com.droidninja:filepicker:2.2.1'
     implementation 'com.mikhaellopez:circularimageview:4.1.1'
-    api 'com.github.bumptech.glide:glide:4.10.0'
+    api 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
-}
-repositories {
-    mavenCentral()
 }
