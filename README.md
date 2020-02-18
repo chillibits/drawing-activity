@@ -23,7 +23,7 @@ allprojects {
 ```
 To load the library into your project use this code in the build.gradle file within the app module:
 ```gradle
-implementation 'com.github.ChilliBits:drawing-activity:2.0.2'
+implementation 'com.github.ChilliBits:drawing-activity:2.0.3'
 ```
 
 # Usage
@@ -33,6 +33,8 @@ DrawingActivityBuilder.getInstance(MainActivity.this)
 	.draw(REQ_DRAWING);
 ```
 Thus `REQ_DRAWING` is a constant of type integer to specify the request code of the returning intent for the `onActivityResult` method.
+
+If you want to have a look onto a implemented example, view the [MainActivity.kt](https://github.com/ChilliBits/splash-screen/blob/master/app/src/main/java/com/chillibits/splashscreenexample/MainActivity.kt) or the [MainActivity.java](https://github.com/ChilliBits/splash-screen/blob/master/app/src/main/java/com/chillibits/splashscreenexample/MainActivityJava.java) file.
 
 You are able to catch the event of finishing the drawing and closing the DrawingActivty by using the `onActivityResult` method like that:
 ```android
@@ -61,4 +63,4 @@ This library uses following third party libraries:
 
 Thank you for using the DrawingActivity!
 
-© ChilliBits 2018-2020 (Designed and developed by Marc Auberer in 2018)
+© ChilliBits 2018-2020 (Designed and developed by Marc Auberer)
