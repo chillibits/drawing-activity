@@ -33,7 +33,7 @@ public class MainActivityJava extends AppCompatActivity {
                 DrawingActivityBuilder.getInstance(MainActivityJava.this)
                     .enableToast(true)
                     .setTitle(R.string.drawing)
-                    .setDefaultUtility(DrawingActivity.UTILITIY_PEN)
+                    .setDefaultUtility(DrawingActivity.UTILITY_PEN)
                     .draw(REQ_DRAWING);
             }
         });

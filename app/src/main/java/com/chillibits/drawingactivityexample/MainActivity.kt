@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             DrawingActivityBuilder.getInstance(this@MainActivity)
                 .enableToast(true)
                 .setTitle(R.string.drawing)
-                .setDefaultUtility(DrawingActivity.UTILITIY_PEN)
+                .setDefaultUtility(DrawingActivity.UTILITY_PEN)
                 .draw(REQ_DRAWING)
         }
     }

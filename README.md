@@ -23,7 +23,7 @@ allprojects {
 ```
 To load the library into your project use this code in the build.gradle file within the app module:
 ```gradle
-implementation 'com.github.ChilliBits:drawing-activity:2.0.3'
+implementation 'com.github.ChilliBits:drawing-activity:2.0.4'
 ```
 
 ## Usage
@@ -55,7 +55,7 @@ You can customize the appearance of the DrawingActivity using following argument
 
 ## Credits
 This library uses following third party libraries:
-*   [DrawingView](https://github.com/Raed-Mughaus/DrawingView)
+*   [DrawingView](https://github.com/Raed-Mughaus/DrawingView) (Repo does not exist anymore)
 *   [SlidingUpPanel](https://github.com/umano/AndroidSlidingUpPanel)
 *   [ColorPickerPreference](https://github.com/attenzione/android-ColorPickerPreference)
 *   [Android FilePicker](https://github.com/DroidNinja/Android-FilePicker)

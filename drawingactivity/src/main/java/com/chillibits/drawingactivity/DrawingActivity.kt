@@ -38,10 +38,6 @@ import java.io.FileOutputStream
 
 class DrawingActivity : AppCompatActivity() {
 
-    // Constants
-    private val IMAGE_COMPRESSION_QUALITY = 85
-    private val REQ_WRITE_EXTERNAL_STORAGE = 1
-
     // Variables as objects
     private var menu: Menu? = null
     private var currentColor = Color.BLACK
@@ -57,8 +53,7 @@ class DrawingActivity : AppCompatActivity() {
         //Initialize Toolbar
         toolbar.title = if (intent.hasExtra(DrawingActivityBuilder.TITLE) && intent.getStringExtra(DrawingActivityBuilder.TITLE) != "")
             intent.getStringExtra(DrawingActivityBuilder.TITLE)
-        else
-            getString(R.string.drawing)
+        else getString(R.string.drawing)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         if (Build.VERSION.SDK_INT >= 21) window.statusBarColor = darkenColor(ContextCompat.getColor(this, R.color.colorPrimary))
@@ -120,133 +115,147 @@ class DrawingActivity : AppCompatActivity() {
             if (b) {
                 settings.selectedBrush = Brushes.PENCIL
                 settings.selectedBrushSize = size.progress / 100.0f
-                current_utility.text = getString(R.string.pencil)
+                current_utility.text = String.format(getString(R.string.current_utility), getString(R.string.pencil))
             }
         }
         utility_eraser.setOnCheckedChangeListener { _, b ->
             if (b) {
                 settings.selectedBrush = Brushes.ERASER
                 settings.selectedBrushSize = size.progress / 100.0f
-                current_utility.text = getString(R.string.eraser)
+                current_utility.text = String.format(getString(R.string.current_utility), getString(R.string.eraser))
             }
         }
         utility_airbrush.setOnCheckedChangeListener { _, b ->
             if (b) {
                 settings.selectedBrush = Brushes.AIR_BRUSH
                 settings.selectedBrushSize = size.progress / 100.0f
-                current_utility.text = getString(R.string.air_brush)
+                current_utility.text = String.format(getString(R.string.current_utility), getString(R.string.air_brush))
             }
         }
         utility_calligraphy.setOnCheckedChangeListener { _, b ->
             if (b) {
                 settings.selectedBrush = Brushes.CALLIGRAPHY
                 settings.selectedBrushSize = size.progress / 100.0f
-                current_utility.text = getString(R.string.calligraphy)
+                current_utility.text = String.format(getString(R.string.current_utility), getString(R.string.calligraphy))
             }
         }
         utility_pen.setOnCheckedChangeListener { _, b ->
             if (b) {
                 settings.selectedBrush = Brushes.PEN
                 settings.selectedBrushSize = size.progress / 100.0f
-                current_utility.text = getString(R.string.pen)
+                current_utility.text = String.format(getString(R.string.current_utility), getString(R.string.pen))
             }
         }
-        if (intent.getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, UTILITIY_PENCIL) == UTILITIY_ERASER) utility_eraser.isChecked = true
-        if (intent.getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, UTILITIY_PENCIL) == UTILITIY_AIR_BRUSH) utility_airbrush.isChecked = true
-        if (intent.getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, UTILITIY_PENCIL) == UTILITIY_CALLIGRAPHY) utility_calligraphy.isChecked = true
-        if (intent.getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, UTILITIY_PENCIL) == UTILITIY_PEN) utility_pen.isChecked = true
+        if (intent.getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, UTILITY_PENCIL) == UTILITY_ERASER) utility_eraser.isChecked = true
+        if (intent.getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, UTILITY_PENCIL) == UTILITY_AIR_BRUSH) utility_airbrush.isChecked = true
+        if (intent.getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, UTILITY_PENCIL) == UTILITY_CALLIGRAPHY) utility_calligraphy.isChecked = true
+        if (intent.getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, UTILITY_PENCIL) == UTILITY_PEN) utility_pen.isChecked = true
+
         //Background
-        background_color.setOnCheckedChangeListener { compoundButton, b ->
+        background_color.setOnCheckedChangeListener { _, b ->
             background_color_preview.isEnabled = b
             choose_background_color.isEnabled = b
         }
-        background_image.setOnCheckedChangeListener { compoundButton, b ->
+        background_image.setOnCheckedChangeListener { _, b ->
             background_image_preview.isEnabled = b
             choose_background_image.isEnabled = b
         }
         choose_background_color.setOnClickListener {
-            val colorPicker = ColorPickerDialog(this@DrawingActivity, currentBackgroundColor)
-            colorPicker.alphaSliderVisible = false
-            colorPicker.hexValueEnabled = true
-            colorPicker.setOnColorChangedListener { color ->
-                currentBackgroundColor = color
-                background_color_preview.setColorFilter(color, PorterDuff.Mode.SRC_IN)
-                drawing_view.drawingBackground = color
-                slidingLayout.panelState = PanelState.COLLAPSED
+            ColorPickerDialog(this@DrawingActivity, currentBackgroundColor).run {
+                alphaSliderVisible = false
+                hexValueEnabled = true
+                setOnColorChangedListener { color ->
+                    currentBackgroundColor = color
+                    background_color_preview.setColorFilter(color, PorterDuff.Mode.SRC_IN)
+                    drawing_view.drawingBackground = color
+                    slidingLayout.panelState = PanelState.COLLAPSED
+                }
+                show()
             }
-            colorPicker.show()
         }
-        choose_background_image.setOnClickListener(View.OnClickListener {
+        choose_background_image.setOnClickListener {
             if (ContextCompat.checkSelfPermission(this@DrawingActivity, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                 chooseBackgroundImage()
             } else {
                 ActivityCompat.requestPermissions(this@DrawingActivity, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), REQ_WRITE_EXTERNAL_STORAGE)
             }
-        })
+        }
         //Clear image
         clear.setOnClickListener { clearDrawing(true) }
         //Show toast
         if (intent.hasExtra(DrawingActivityBuilder.TOAST_ENABLED)) {
             if (intent.getBooleanExtra(DrawingActivityBuilder.TOAST_ENABLED, true)) {
-                val toast = Toast.makeText(this, getString(R.string.drawing_instructions), Toast.LENGTH_SHORT)
-                toast.setGravity(Gravity.CENTER, 0, 0)
-                toast.show()
+                Toast.makeText(this, getString(R.string.drawing_instructions), Toast.LENGTH_SHORT).run {
+                    setGravity(Gravity.CENTER, 0, 0)
+                    show()
+                }
             }
         } else {
-            val toast = Toast.makeText(this, getString(R.string.drawing_instructions), Toast.LENGTH_SHORT)
-            toast.setGravity(Gravity.CENTER, 0, 0)
-            toast.show()
+            Toast.makeText(this, getString(R.string.drawing_instructions), Toast.LENGTH_SHORT).run {
+                setGravity(Gravity.CENTER, 0, 0)
+                show()
+            }
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         this.menu = menu
-        menuInflater.inflate(R.menu.menu_drawing, menu)
-        menu.findItem(R.id.action_undo).icon.alpha = 130
-        menu.findItem(R.id.action_redo).icon.alpha = 130
-        menu.findItem(R.id.action_done).icon.alpha = 130
+        menu.run {
+            menuInflater.inflate(R.menu.menu_drawing, this)
+            findItem(R.id.action_undo).icon.alpha = 130
+            findItem(R.id.action_redo).icon.alpha = 130
+            findItem(R.id.action_done).icon.alpha = 130
+        }
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        when (id) {
+        when (item.itemId) {
             android.R.id.home -> finishWarning()
             R.id.action_done -> {
                 val b = drawing_view.exportDrawing()
                 val file = File(cacheDir, "drawing")
                 if (file.exists()) file.delete()
                 try {
-                    val out = FileOutputStream(file)
-                    b.compress(Bitmap.CompressFormat.JPEG, IMAGE_COMPRESSION_QUALITY, out)
-                    out.flush()
-                    out.close()
-                } catch (ignored: Exception) { }
-                val i = Intent()
-                i.putExtra(DRAWING_PATH, file.absolutePath)
-                setResult(Activity.RESULT_OK, i)
+                    FileOutputStream(file).run {
+                        b.compress(Bitmap.CompressFormat.JPEG, IMAGE_COMPRESSION_QUALITY, this)
+                        flush()
+                        close()
+                    }
+                } catch (ignored: Exception) {}
+                Intent().run {
+                    putExtra(DRAWING_PATH, file.absolutePath)
+                    setResult(Activity.RESULT_OK, this)
+                }
                 finish()
             }
             R.id.action_undo -> {
                 drawing_view.undo()
-                menu?.findItem(R.id.action_undo)?.isEnabled = !drawing_view.isUndoStackEmpty
-                menu?.findItem(R.id.action_undo)?.icon?.alpha = if (drawing_view.isUndoStackEmpty) 130 else 255
-                menu?.findItem(R.id.action_redo)?.isEnabled = !drawing_view.isRedoStackEmpty
-                menu?.findItem(R.id.action_redo)?.icon?.alpha = if (drawing_view.isRedoStackEmpty) 130 else 255
-                menu?.findItem(R.id.action_done)?.isEnabled = !drawing_view.isUndoStackEmpty
-                menu?.findItem(R.id.action_done)?.icon?.alpha = if (drawing_view.isUndoStackEmpty) 130 else 255
+                updateToolbarButtonStates()
             }
             R.id.action_redo -> {
                 drawing_view.redo()
-                menu?.findItem(R.id.action_undo)?.isEnabled = !drawing_view.isUndoStackEmpty
-                menu?.findItem(R.id.action_undo)?.icon?.alpha = if (drawing_view.isUndoStackEmpty) 130 else 255
-                menu?.findItem(R.id.action_redo)?.isEnabled = !drawing_view.isRedoStackEmpty
-                menu?.findItem(R.id.action_redo)?.icon?.alpha = if (drawing_view.isRedoStackEmpty) 130 else 255
-                menu?.findItem(R.id.action_done)?.isEnabled = !drawing_view.isUndoStackEmpty
-                menu?.findItem(R.id.action_done)?.icon?.alpha = if (drawing_view.isUndoStackEmpty) 130 else 255
+                updateToolbarButtonStates()
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun updateToolbarButtonStates() {
+        menu?.run {
+            findItem(R.id.action_undo)?.run {
+                isEnabled = !drawing_view.isUndoStackEmpty
+                icon?.alpha = if (drawing_view.isUndoStackEmpty) 130 else 255
+            }
+            findItem(R.id.action_redo)?.run {
+                isEnabled = !drawing_view.isRedoStackEmpty
+                icon?.alpha = if (drawing_view.isRedoStackEmpty) 130 else 255
+            }
+            findItem(R.id.action_done)?.run {
+                isEnabled = !drawing_view.isUndoStackEmpty
+                icon?.alpha = if (drawing_view.isUndoStackEmpty) 130 else 255
+            }
+        }
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
@@ -261,27 +270,25 @@ class DrawingActivity : AppCompatActivity() {
         return super.onKeyDown(keyCode, event)
     }
 
+    /**
+     * Clears the contents of the drawing. You can optionally show a warning to the user
+     *
+     * @param warning Show a warning to the user before clearing the drawing
+     */
     fun clearDrawing(warning: Boolean) {
         if (warning) {
             AlertDialog.Builder(this)
                 .setTitle(R.string.drawing)
                 .setMessage(R.string.warning_clear)
                 .setNegativeButton(R.string.cancel, null)
-                .setPositiveButton(R.string.yes) { dialogInterface, i -> clear() }
+                .setPositiveButton(R.string.yes) { _, _ -> clear() }
                 .show()
-        } else {
-            clear()
-        }
+        } else clear()
     }
 
     private fun clear() {
         drawing_view.clear()
-        menu?.findItem(R.id.action_undo)?.isEnabled = false
-        menu?.findItem(R.id.action_undo)?.icon?.alpha = 130
-        menu?.findItem(R.id.action_redo)?.isEnabled = false
-        menu?.findItem(R.id.action_redo)?.icon?.alpha = 130
-        menu?.findItem(R.id.action_done)?.isEnabled = false
-        menu?.findItem(R.id.action_done)?.icon?.alpha = 130
+        updateToolbarButtonStates()
         slidingLayout.panelState = PanelState.COLLAPSED
     }
 
@@ -290,14 +297,14 @@ class DrawingActivity : AppCompatActivity() {
             .setMaxCount(1)
             .enableCameraSupport(true)
             .enableVideoPicker(false)
-            .pickPhoto(this@DrawingActivity)
+            .pickPhoto(this)
     }
 
     private fun finishWarning() {
         if (!drawing_view.isUndoStackEmpty) {
             if (!pressedOnce) {
                 pressedOnce = true
-                Toast.makeText(this@DrawingActivity, R.string.press_again_to_discard_drawing, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.press_again_to_discard_drawing, Toast.LENGTH_SHORT).show()
                 Handler().postDelayed({ pressedOnce = false }, 2500)
             } else {
                 pressedOnce = false
@@ -358,12 +365,13 @@ class DrawingActivity : AppCompatActivity() {
 
     companion object {
         const val DRAWING_PATH = "DrawingPath"
-        const val UTILITIY_PENCIL = 1
-        const val UTILITIY_ERASER = 2
-        const val UTILITIY_AIR_BRUSH = 3
-        const val UTILITIY_CALLIGRAPHY = 4
-        const val UTILITIY_PEN = 5
-        val instance: DrawingActivity
-            get() = DrawingActivity()
+        private const val IMAGE_COMPRESSION_QUALITY = 85
+        private const val REQ_WRITE_EXTERNAL_STORAGE = 1
+        const val UTILITY_PENCIL = 1
+        const val UTILITY_ERASER = 2
+        const val UTILITY_AIR_BRUSH = 3
+        const val UTILITY_CALLIGRAPHY = 4
+        const val UTILITY_PEN = 5
+        val instance = DrawingActivity()
     }
 }
