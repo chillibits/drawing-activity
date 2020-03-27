@@ -1,4 +1,5 @@
 # Android DrawingActivity
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/88a25db5ab6c4c44b440814778de4236)](https://app.codacy.com/gh/ChilliBits/drawing-activity?utm_source=github.com&utm_medium=referral&utm_content=ChilliBits/drawing-activity&utm_campaign=Badge_Grade_Dashboard)
 [![](https://jitpack.io/v/ChilliBits/drawing-activity.svg)](https://jitpack.io/#ChilliBits/drawing-activity)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-DrawingActivity-blue.svg?style=flat)](https://android-arsenal.com/details/1/7098)
 [![API](https://img.shields.io/badge/API-19%2B-red.svg?style=flat)](https://android-arsenal.com/api?level=19)
