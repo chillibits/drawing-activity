@@ -12,6 +12,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.PorterDuff
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -33,7 +34,6 @@ import kotlinx.android.synthetic.main.activity_drawing.*
 import kotlinx.android.synthetic.main.toolbar.*
 import net.margaritov.preference.colorpicker.ColorPickerDialog
 import java.io.File
-import java.io.FileInputStream
 import java.io.FileOutputStream
 
 class DrawingActivity : AppCompatActivity() {
@@ -68,9 +68,9 @@ class DrawingActivity : AppCompatActivity() {
         })
 
         //Initialize DrawingView
-        drawing_view.setUndoAndRedoEnable(true)
-        drawing_view.brushSettings.selectedBrushSize = 0.25f
-        drawing_view.setOnDrawListener {
+        drawingView.setUndoAndRedoEnable(true)
+        drawingView.brushSettings.selectedBrushSize = 0.25f
+        drawingView.setOnDrawListener {
             menu?.findItem(R.id.action_undo)?.isEnabled = true
             menu?.findItem(R.id.action_undo)?.icon?.alpha = 255
             menu?.findItem(R.id.action_redo)?.isEnabled = false
@@ -78,26 +78,26 @@ class DrawingActivity : AppCompatActivity() {
             menu?.findItem(R.id.action_done)?.isEnabled = true
             menu?.findItem(R.id.action_done)?.icon?.alpha = 255
         }
-        drawing_view.clear()
+        drawingView.clear()
 
         //Initialize Preview
         current_utility.text = String.format(getString(R.string.current_utility), getString(R.string.pen))
-        current_size.text = String.format(getString(R.string.current_size), 25)
+        currentSize.text = String.format(getString(R.string.current_size), 25)
         arrow.setOnClickListener {
             slidingLayout.panelState = if (slidingLayout.panelState == PanelState.EXPANDED) PanelState.COLLAPSED else PanelState.EXPANDED
         }
 
         //Initialize BrushView
-        brush_view.setDrawingView(drawing_view)
-        val settings = drawing_view.brushSettings
-        choose_color.setOnClickListener {
+        brushView.setDrawingView(drawingView)
+        val settings = drawingView.brushSettings
+        chooseColor.setOnClickListener {
             val colorPicker = ColorPickerDialog(this@DrawingActivity, currentColor)
             colorPicker.alphaSliderVisible = false
             colorPicker.hexValueEnabled = true
             colorPicker.setOnColorChangedListener { color ->
                 currentColor = color
-                color_preview.setColorFilter(color, PorterDuff.Mode.SRC_IN)
-                color_preview_slide.setColorFilter(color, PorterDuff.Mode.SRC_IN)
+                colorPreview.setColorFilter(color, PorterDuff.Mode.SRC_IN)
+                colorPreviewSlide.setColorFilter(color, PorterDuff.Mode.SRC_IN)
                 settings.color = color
             }
             colorPicker.show()
@@ -105,75 +105,75 @@ class DrawingActivity : AppCompatActivity() {
         size.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
                 settings.selectedBrushSize = i / 100.0f
-                current_size.text = String.format(getString(R.string.current_size), i)
+                currentSize.text = String.format(getString(R.string.current_size), i)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {}
             override fun onStopTrackingTouch(seekBar: SeekBar) {}
         })
-        utility_pencil.setOnCheckedChangeListener { _, b ->
+        utilityPencil.setOnCheckedChangeListener { _, b ->
             if (b) {
                 settings.selectedBrush = Brushes.PENCIL
                 settings.selectedBrushSize = size.progress / 100.0f
                 current_utility.text = String.format(getString(R.string.current_utility), getString(R.string.pencil))
             }
         }
-        utility_eraser.setOnCheckedChangeListener { _, b ->
+        utilityEraser.setOnCheckedChangeListener { _, b ->
             if (b) {
                 settings.selectedBrush = Brushes.ERASER
                 settings.selectedBrushSize = size.progress / 100.0f
                 current_utility.text = String.format(getString(R.string.current_utility), getString(R.string.eraser))
             }
         }
-        utility_airbrush.setOnCheckedChangeListener { _, b ->
+        utilityAirbrush.setOnCheckedChangeListener { _, b ->
             if (b) {
                 settings.selectedBrush = Brushes.AIR_BRUSH
                 settings.selectedBrushSize = size.progress / 100.0f
                 current_utility.text = String.format(getString(R.string.current_utility), getString(R.string.air_brush))
             }
         }
-        utility_calligraphy.setOnCheckedChangeListener { _, b ->
+        utilityCalligraphy.setOnCheckedChangeListener { _, b ->
             if (b) {
                 settings.selectedBrush = Brushes.CALLIGRAPHY
                 settings.selectedBrushSize = size.progress / 100.0f
                 current_utility.text = String.format(getString(R.string.current_utility), getString(R.string.calligraphy))
             }
         }
-        utility_pen.setOnCheckedChangeListener { _, b ->
+        utilityPen.setOnCheckedChangeListener { _, b ->
             if (b) {
                 settings.selectedBrush = Brushes.PEN
                 settings.selectedBrushSize = size.progress / 100.0f
                 current_utility.text = String.format(getString(R.string.current_utility), getString(R.string.pen))
             }
         }
-        if (intent.getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, UTILITY_PENCIL) == UTILITY_ERASER) utility_eraser.isChecked = true
-        if (intent.getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, UTILITY_PENCIL) == UTILITY_AIR_BRUSH) utility_airbrush.isChecked = true
-        if (intent.getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, UTILITY_PENCIL) == UTILITY_CALLIGRAPHY) utility_calligraphy.isChecked = true
-        if (intent.getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, UTILITY_PENCIL) == UTILITY_PEN) utility_pen.isChecked = true
+        if (intent.getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, UTILITY_PENCIL) == UTILITY_ERASER) utilityEraser.isChecked = true
+        if (intent.getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, UTILITY_PENCIL) == UTILITY_AIR_BRUSH) utilityAirbrush.isChecked = true
+        if (intent.getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, UTILITY_PENCIL) == UTILITY_CALLIGRAPHY) utilityCalligraphy.isChecked = true
+        if (intent.getIntExtra(DrawingActivityBuilder.DEFAULT_UTILITY, UTILITY_PENCIL) == UTILITY_PEN) utilityPen.isChecked = true
 
         //Background
-        background_color.setOnCheckedChangeListener { _, b ->
-            background_color_preview.isEnabled = b
-            choose_background_color.isEnabled = b
+        backgroundColor.setOnCheckedChangeListener { _, b ->
+            backgroundColorPreview.isEnabled = b
+            chooseBackgroundColor.isEnabled = b
         }
-        background_image.setOnCheckedChangeListener { _, b ->
-            background_image_preview.isEnabled = b
-            choose_background_image.isEnabled = b
+        backgroundImage.setOnCheckedChangeListener { _, b ->
+            backgroundImagePreview.isEnabled = b
+            chooseBackgroundImage.isEnabled = b
         }
-        choose_background_color.setOnClickListener {
+        chooseBackgroundColor.setOnClickListener {
             ColorPickerDialog(this@DrawingActivity, currentBackgroundColor).run {
                 alphaSliderVisible = false
                 hexValueEnabled = true
                 setOnColorChangedListener { color ->
                     currentBackgroundColor = color
-                    background_color_preview.setColorFilter(color, PorterDuff.Mode.SRC_IN)
-                    drawing_view.drawingBackground = color
+                    backgroundColorPreview.setColorFilter(color, PorterDuff.Mode.SRC_IN)
+                    drawingView.drawingBackground = color
                     slidingLayout.panelState = PanelState.COLLAPSED
                 }
                 show()
             }
         }
-        choose_background_image.setOnClickListener {
+        chooseBackgroundImage.setOnClickListener {
             if (ContextCompat.checkSelfPermission(this@DrawingActivity, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                 chooseBackgroundImage()
             } else {
@@ -213,7 +213,7 @@ class DrawingActivity : AppCompatActivity() {
         when (item.itemId) {
             android.R.id.home -> finishWarning()
             R.id.action_done -> {
-                val b = drawing_view.exportDrawing()
+                val b = drawingView.exportDrawing()
                 val file = File(cacheDir, "drawing")
                 if (file.exists()) file.delete()
                 try {
@@ -230,11 +230,11 @@ class DrawingActivity : AppCompatActivity() {
                 finish()
             }
             R.id.action_undo -> {
-                drawing_view.undo()
+                drawingView.undo()
                 updateToolbarButtonStates()
             }
             R.id.action_redo -> {
-                drawing_view.redo()
+                drawingView.redo()
                 updateToolbarButtonStates()
             }
         }
@@ -244,16 +244,16 @@ class DrawingActivity : AppCompatActivity() {
     private fun updateToolbarButtonStates() {
         menu?.run {
             findItem(R.id.action_undo)?.run {
-                isEnabled = !drawing_view.isUndoStackEmpty
-                icon?.alpha = if (drawing_view.isUndoStackEmpty) 130 else 255
+                isEnabled = !drawingView.isUndoStackEmpty
+                icon?.alpha = if (drawingView.isUndoStackEmpty) 130 else 255
             }
             findItem(R.id.action_redo)?.run {
-                isEnabled = !drawing_view.isRedoStackEmpty
-                icon?.alpha = if (drawing_view.isRedoStackEmpty) 130 else 255
+                isEnabled = !drawingView.isRedoStackEmpty
+                icon?.alpha = if (drawingView.isRedoStackEmpty) 130 else 255
             }
             findItem(R.id.action_done)?.run {
-                isEnabled = !drawing_view.isUndoStackEmpty
-                icon?.alpha = if (drawing_view.isUndoStackEmpty) 130 else 255
+                isEnabled = !drawingView.isUndoStackEmpty
+                icon?.alpha = if (drawingView.isUndoStackEmpty) 130 else 255
             }
         }
     }
@@ -287,7 +287,7 @@ class DrawingActivity : AppCompatActivity() {
     }
 
     private fun clear() {
-        drawing_view.clear()
+        drawingView.clear()
         updateToolbarButtonStates()
         slidingLayout.panelState = PanelState.COLLAPSED
     }
@@ -301,7 +301,7 @@ class DrawingActivity : AppCompatActivity() {
     }
 
     private fun finishWarning() {
-        if (!drawing_view.isUndoStackEmpty) {
+        if (!drawingView.isUndoStackEmpty) {
             if (!pressedOnce) {
                 pressedOnce = true
                 Toast.makeText(this, R.string.press_again_to_discard_drawing, Toast.LENGTH_SHORT).show()
@@ -318,16 +318,16 @@ class DrawingActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_PHOTO && resultCode == Activity.RESULT_OK && data != null) {
-            val paths = data.getStringArrayListExtra(KEY_SELECTED_MEDIA)!!
-            val b = loadImageFromPath(paths[0])
+            val paths = data.getParcelableArrayListExtra<Uri>(KEY_SELECTED_MEDIA)!!
+            val b = loadImageFromUri(paths[0])
             if(b != null) {
                 AlertDialog.Builder(this)
                     .setTitle(R.string.drawing)
                     .setMessage(R.string.warning_background_image)
                     .setNegativeButton(R.string.cancel, null)
                     .setPositiveButton(R.string.yes) { _, _ ->
-                        drawing_view.setBackgroundImage(b)
-                        background_image_preview.setImageBitmap(b)
+                        drawingView.setBackgroundImage(b)
+                        backgroundImagePreview.setImageBitmap(b)
                         menu?.findItem(R.id.action_undo)?.isEnabled = false
                         menu?.findItem(R.id.action_undo)?.icon?.alpha = 130
                         menu?.findItem(R.id.action_redo)?.isEnabled = false
@@ -348,9 +348,10 @@ class DrawingActivity : AppCompatActivity() {
         if (requestCode == REQ_WRITE_EXTERNAL_STORAGE && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) chooseBackgroundImage()
     }
 
-    private fun loadImageFromPath(path: String): Bitmap? {
+    private fun loadImageFromUri(uri: Uri): Bitmap? {
         return try {
-            return BitmapFactory.decodeStream(FileInputStream(path))
+            val imageStream = contentResolver.openInputStream(uri)
+            BitmapFactory.decodeStream(imageStream)
         } catch (ignored: Exception) {
             null
         }
