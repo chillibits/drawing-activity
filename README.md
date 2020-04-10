@@ -1,5 +1,6 @@
 # Android DrawingActivity
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/88a25db5ab6c4c44b440814778de4236)](https://app.codacy.com/gh/ChilliBits/drawing-activity?utm_source=github.com&utm_medium=referral&utm_content=ChilliBits/drawing-activity&utm_campaign=Badge_Grade_Dashboard)
+[![Build Status](https://travis-ci.com/ChilliBits/drawing-activity.svg?branch=master)](https://travis-ci.com/ChilliBits/drawing-activity)
 [![](https://jitpack.io/v/ChilliBits/drawing-activity.svg)](https://jitpack.io/#ChilliBits/drawing-activity)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-DrawingActivity-blue.svg?style=flat)](https://android-arsenal.com/details/1/7098)
 [![API](https://img.shields.io/badge/API-19%2B-red.svg?style=flat)](https://android-arsenal.com/api?level=19)
@@ -12,7 +13,6 @@ A lightweight android library for including a drawing experience to your Android
 ![3](https://chillibits.com/github-media/DrawingActivity/3_small.png)
 
 ## Installation
-
 Up to now, the library is only available on JitPack. Please add this code to your build.gradle file on project level:
 ```gradle
 allprojects {
