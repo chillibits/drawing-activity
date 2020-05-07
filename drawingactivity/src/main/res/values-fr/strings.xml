@@ -13,12 +13,12 @@
     <string name="pen">Stylo</string>
     <string name="current_utility">Utilitaire: %s</string>
     <string name="current_size">Taille: %s \%%</string>
-    <string name="background_color">Couleur de l'arrière plan</string>
+    <string name="background_color">Couleur de l\'arrière plan</string>
     <string name="choose_color">Choisir la couleur</string>
-    <string name="choose_image">Choisir l'image</string>
-    <string name="clear_image">effacer l'image</string>
+    <string name="choose_image">Choisir l\'image</string>
+    <string name="clear_image">effacer l\'image</string>
     <string name="background_image">Image de fond</string>
-    <string name="warning_background_image">Lorsque vous définissez l'image d'arrière-plan, le dessin est effacé. Continuer?</string>
+    <string name="warning_background_image">Lorsque vous définissez l\'image d\'arrière-plan, le dessin est effacé. Continuer?</string>
     <string name="warning_clear">Voulez-vous vraiment effacer le dessin?</string>
     <string name="calligraphy">Calligraphie</string>
     <string name="undo">Défaire</string>
@@ -26,5 +26,5 @@
     <string name="cancel">Annuler</string>
     <string name="yes">Oui</string>
     <string name="press_again_to_discard_drawing">Appuyez à nouveau pour supprimer le dessin</string>
-    <string name="error_loading_image">Erreur lors du chargement de l'image</string>
+    <string name="error_loading_image">Erreur lors du chargement de l\'image</string>
 </resources>
