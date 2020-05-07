@@ -166,9 +166,11 @@ class DrawingActivity : AppCompatActivity() {
                 hexValueEnabled = true
                 setOnColorChangedListener { color ->
                     currentBackgroundColor = color
-                    backgroundColorPreview.setColorFilter(color, PorterDuff.Mode.SRC_IN)
-                    drawingView.drawingBackground = color
-                    slidingLayout.panelState = PanelState.COLLAPSED
+                    this@DrawingActivity.run {
+                        backgroundColorPreview.setColorFilter(color, PorterDuff.Mode.SRC_IN)
+                        drawingView.drawingBackground = color
+                        slidingLayout.panelState = PanelState.COLLAPSED
+                    }
                 }
                 show()
             }
