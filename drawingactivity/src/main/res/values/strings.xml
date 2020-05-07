@@ -14,7 +14,7 @@
     <string name="air_brush">Air brush</string>
     <string name="pen">Pen</string>
     <string name="current_utility">Utility: %s</string>
-    <string name="current_size">Size: %s</string>
+    <string name="current_size">Size: %s \%%</string>
     <string name="background_color">Background color</string>
     <string name="choose_color">Choose color</string>
     <string name="choose_image">Choose image</string>

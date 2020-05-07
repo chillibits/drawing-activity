@@ -12,9 +12,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="bottom"
-    sothree:umanoPanelHeight="70dp"
+    sothree:umanoPanelHeight="65dp"
     sothree:umanoShadowHeight="3dp"
-    sothree:umanoScrollableView="@id/scrolView"
+    sothree:umanoScrollableView="@id/scrollView"
     tools:context=".DrawingActivity" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,15 +34,17 @@
             app:drawing_background_color="#eee" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="5dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/colorPreview"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            sothree:layout_constraintTop_toTopOf="parent"
+            sothree:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/round_button"
             android:tint="@color/black"/>
 
@@ -50,103 +52,91 @@
             android:id="@+id/current_utility"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            sothree:layout_constraintTop_toTopOf="parent"
+            sothree:layout_constraintStart_toEndOf="@+id/colorPreview"
+            android:layout_marginTop="3dp"
             android:layout_marginStart="15dp"
             android:textSize="17sp"
-            android:textStyle="bold"
-            android:layout_toStartOf="@+id/arrow"
-            android:layout_toEndOf="@+id/colorPreview"/>
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/currentSize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/current_utility"
+            sothree:layout_constraintTop_toBottomOf="@+id/current_utility"
+            sothree:layout_constraintStart_toEndOf="@+id/colorPreview"
             android:layout_marginTop="3dp"
-            android:layout_marginStart="15dp"
-            android:textSize="17sp"
-            android:layout_toStartOf="@+id/arrow"
-            android:layout_toEndOf="@+id/colorPreview"/>
+            android:layout_marginStart="15dp"/>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/arrow"
-            android:layout_width="40dp"
-            android:layout_height="60dp"
+            android:layout_width="34dp"
+            android:layout_height="55dp"
+            sothree:layout_constraintEnd_toEndOf="parent"
+            sothree:layout_constraintTop_toTopOf="parent"
             android:gravity="center"
             app:srcCompat="@drawable/arrow_drop_up_black"
-            android:layout_alignParentEnd="true"
             android:clickable="true"
             android:tint="@color/gray_light"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:focusable="true" />
 
-        <View
-            android:id="@+id/divider1"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/colorPreview"
-            android:background="@color/gray_light"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"/>
-
         <com.raed.drawingview.BrushView
             android:id="@+id/brushView"
             android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_height="130dp"
-            android:layout_below="@+id/divider1"/>
-
-        <View
-            android:id="@+id/divider2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/brushView"
-            android:background="@color/gray_light"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"/>
+            sothree:layout_constraintTop_toBottomOf="@+id/colorPreview"/>
 
         <ScrollView
-            android:id="@+id/scrolView"
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/divider2">
+            android:layout_height="wrap_content"
+            sothree:layout_constraintTop_toBottomOf="@+id/brushView">
 
-            <RelativeLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/colorPreviewSlide"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    app:srcCompat="@drawable/round_button"
-                    android:layout_marginTop="5dp"
-                    android:tint="@color/black"/>
-
-                <Button
-                    android:id="@+id/chooseColor"
+                <LinearLayout
+                    android:id="@+id/colorContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/choose_color"
-                    android:layout_marginTop="5dp"
-                    android:layout_toEndOf="@+id/colorPreviewSlide"
-                    android:layout_alignTop="@+id/colorPreviewSlide"/>
+                    sothree:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/colorPreviewSlide"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        app:srcCompat="@drawable/round_button"
+                        android:tint="@color/black"/>
+
+                    <Button
+                        android:id="@+id/chooseColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/choose_color"
+                        android:layout_marginTop="3dp"/>
+                </LinearLayout>
 
                 <SeekBar
                     android:id="@+id/size"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    sothree:layout_constraintTop_toBottomOf="@+id/colorContainer"
                     android:min="1"
                     android:max="100"
                     android:progress="25"
-                    android:layout_below="@+id/colorPreviewSlide"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp" tools:targetApi="o"/>
+                    tools:targetApi="o"/>
 
                 <RadioGroup
                     android:id="@+id/utility"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/size">
+                    android:layout_marginTop="5dp"
+                    sothree:layout_constraintTop_toBottomOf="@+id/size">
 
                     <RadioButton
                         android:id="@+id/utilityPencil"
@@ -181,10 +171,10 @@
                 </RadioGroup>
 
                 <View
-                    android:id="@+id/divider3"
+                    android:id="@+id/divider1"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@+id/utility"
+                    sothree:layout_constraintTop_toBottomOf="@+id/utility"
                     android:background="@color/gray_light"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"/>
@@ -193,7 +183,7 @@
                     android:id="@+id/background"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/divider3"
+                    sothree:layout_constraintTop_toBottomOf="@+id/utility"
                     android:layout_marginTop="5dp">
 
                     <RadioButton
@@ -251,10 +241,10 @@
                 </RadioGroup>
 
                 <View
-                    android:id="@+id/divider4"
+                    android:id="@+id/divider2"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@+id/background"
+                    sothree:layout_constraintTop_toBottomOf="@+id/background"
                     android:background="@color/gray_light"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"/>
@@ -264,8 +254,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/clear_image"
-                    android:layout_below="@+id/divider4"/>
-            </RelativeLayout>
+                    sothree:layout_constraintTop_toBottomOf="@+id/divider2"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>

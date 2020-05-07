@@ -16,7 +16,7 @@
     <string name="calligraphy">Schrift</string>
     <string name="pen">Stift</string>
     <string name="current_utility">Werkzeug: %s</string>
-    <string name="current_size">Größe: %s</string>
+    <string name="current_size">Größe: %s \%%</string>
     <string name="warning_clear">Wollen Sie wirklich die Zeichnung leeren?</string>
     <string name="warning_background_image">Wenn das Hintergrundbild festgelegt wird, wird die Zeichnung geleert. Wollen Sie fortfahren?</string>
     <string name="background_color">Hintergrundfarbe</string>
