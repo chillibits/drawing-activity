@@ -4,8 +4,6 @@
   -->
 
 <resources>
-    <string name="app_name">Drawing Activity</string>
-
     <string name="drawing">Drawing</string>
     <string name="drawing_instructions">Draw within the white area</string>
     <string name="redo">Redo</string>

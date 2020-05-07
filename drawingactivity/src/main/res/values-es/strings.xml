@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © Marc Auberer 2020. All rights reserved
+  -->
+
+<resources>
+    <string name="drawing">Dibujo</string>
+    <string name="drawing_instructions">Dibuja dentro del área blanca</string>
+    <string name="redo">Rehacer</string>
+    <string name="pencil">Lápiz</string>
+    <string name="eraser">Borrador</string>
+    <string name="air_brush">Cepillo de aire</string>
+    <string name="pen">Pluma</string>
+    <string name="current_utility">Utilidad: %s</string>
+    <string name="current_size">Tamaño: %s \%%</string>
+    <string name="background_color">Color de fondo</string>
+    <string name="choose_color">Elija el colorr</string>
+    <string name="choose_image">Elija una imagen</string>
+    <string name="clear_image">Imagen clara</string>
+    <string name="background_image">Imagen de fondo</string>
+    <string name="warning_background_image">Cuando se establece la imagen de fondo, el dibujo se borrará. ¿Continuar?</string>
+    <string name="warning_clear">¿Realmente quieres limpiar el dibujo?</string>
+    <string name="calligraphy">Caligrafía</string>
+    <string name="undo">Deshacer</string>
+    <string name="done">Hecho</string>
+    <string name="cancel">Cancelar</string>
+    <string name="yes">Si</string>
+    <string name="press_again_to_discard_drawing">Golpee una vez más para descartar el dibujo</string>
+    <string name="error_loading_image">Error al cargar la imagen</string>
+</resources>

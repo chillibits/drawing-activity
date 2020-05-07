@@ -4,8 +4,6 @@
   -->
 
 <resources>
-    <string name="app_name">Drawing Activity</string>
-
     <string name="drawing">Zeichnung</string>
     <string name="drawing_instructions">Zeichne auf die weiße Fläche</string>
     <string name="undo">Rückgängig</string>
