@@ -4,27 +4,27 @@
   -->
 
 <resources>
-    <string name="drawing">Drawing</string>
-    <string name="drawing_instructions">Draw within the white area</string>
-    <string name="redo">Redo</string>
-    <string name="pencil">Pencil</string>
-    <string name="eraser">Eraser</string>
-    <string name="air_brush">Air brush</string>
-    <string name="pen">Pen</string>
-    <string name="current_utility">Utility: %s</string>
-    <string name="current_size">Size: %s \%%</string>
-    <string name="background_color">Background color</string>
-    <string name="choose_color">Choose color</string>
-    <string name="choose_image">Choose image</string>
-    <string name="clear_image">Clear image</string>
-    <string name="background_image">Background image</string>
-    <string name="warning_background_image">When you set the background image, the drawing would be cleared. Continue?</string>
-    <string name="warning_clear">Do you really want to clear the drawing?</string>
-    <string name="calligraphy">Calligraphy</string>
-    <string name="undo">Undo</string>
-    <string name="done">Done</string>
-    <string name="cancel">Cancel</string>
-    <string name="yes">Yes</string>
-    <string name="press_again_to_discard_drawing">Tap once again to discard the drawing</string>
-    <string name="error_loading_image">Error loading image</string>
+    <string name="drawing">Dessin</string>
+    <string name="drawing_instructions">Dessinez dans la zone blanche</string>
+    <string name="redo">Refaire</string>
+    <string name="pencil">Crayon</string>
+    <string name="eraser">Gomme</string>
+    <string name="air_brush">Pistolet pulvérisateur</string>
+    <string name="pen">Stylo</string>
+    <string name="current_utility">Utilitaire: %s</string>
+    <string name="current_size">Taille: %s \%%</string>
+    <string name="background_color">Couleur de l'arrière plan</string>
+    <string name="choose_color">Choisir la couleur</string>
+    <string name="choose_image">Choisir l'image</string>
+    <string name="clear_image">effacer l'image</string>
+    <string name="background_image">Image de fond</string>
+    <string name="warning_background_image">Lorsque vous définissez l'image d'arrière-plan, le dessin est effacé. Continuer?</string>
+    <string name="warning_clear">Voulez-vous vraiment effacer le dessin?</string>
+    <string name="calligraphy">Calligraphie</string>
+    <string name="undo">Défaire</string>
+    <string name="done">Terminé</string>
+    <string name="cancel">Annuler</string>
+    <string name="yes">Oui</string>
+    <string name="press_again_to_discard_drawing">Appuyez à nouveau pour supprimer le dessin</string>
+    <string name="error_loading_image">Erreur lors du chargement de l'image</string>
 </resources>
