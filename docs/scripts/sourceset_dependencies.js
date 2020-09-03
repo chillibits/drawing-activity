@@ -1,1 +1,1 @@
-sourceset_dependencies = '{":drawingactivity/main": []}'
+sourceset_dependencies = '{":drawingactivity/debug": [], ":drawingactivity/main": [], ":drawingactivity/release": []}'
