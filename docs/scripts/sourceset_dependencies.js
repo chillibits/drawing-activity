@@ -1,1 +1,1 @@
-sourceset_dependencies = '{":drawingactivity/debug": [], ":drawingactivity/main": [], ":drawingactivity/release": []}'
+sourceset_dependencies = '{":drawingactivity:dokkaHtml/debug": [], ":drawingactivity:dokkaHtml/main": [], ":drawingactivity:dokkaHtml/release": []}'
