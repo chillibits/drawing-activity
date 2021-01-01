@@ -67,4 +67,4 @@ If you want to contribute to this library, feel free to open a pr! We're going t
 
 Thank you for using the DrawingActivity!
 
-© ChilliBits 2018-2020 (Designed and developed by Marc Auberer)
+© ChilliBits 2018-2021 (Designed and developed by Marc Auberer)
