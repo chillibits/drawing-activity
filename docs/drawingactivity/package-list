@@ -1,5 +1,31 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
-
+$dokka.location:com.chillibits.drawingactivity////PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/index.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivity.Companion///PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity/-companion/index.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivity.Companion/DRAWING_PATH/#/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity/-companion/-d-r-a-w-i-n-g_-p-a-t-h.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivity.Companion/UTILITY_AIR_BRUSH/#/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity/-companion/-u-t-i-l-i-t-y_-a-i-r_-b-r-u-s-h.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivity.Companion/UTILITY_CALLIGRAPHY/#/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity/-companion/-u-t-i-l-i-t-y_-c-a-l-l-i-g-r-a-p-h-y.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivity.Companion/UTILITY_ERASER/#/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity/-companion/-u-t-i-l-i-t-y_-e-r-a-s-e-r.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivity.Companion/UTILITY_PEN/#/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity/-companion/-u-t-i-l-i-t-y_-p-e-n.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivity.Companion/UTILITY_PENCIL/#/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity/-companion/-u-t-i-l-i-t-y_-p-e-n-c-i-l.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivity.Companion/instance/#/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity/-companion/instance.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivity///PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity/index.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivity/DrawingActivity/#/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity/-drawing-activity.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivity/clearDrawing/#kotlin.Boolean/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity/clear-drawing.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivity/onCreateOptionsMenu/#android.view.Menu/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity/on-create-options-menu.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivity/onKeyDown/#kotlin.Int#android.view.KeyEvent/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity/on-key-down.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivity/onOptionsItemSelected/#android.view.MenuItem/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity/on-options-item-selected.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivity/onRequestPermissionsResult/#kotlin.Int#kotlin.Array[kotlin.String]#kotlin.IntArray/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity/on-request-permissions-result.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivityBuilder.Companion///PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity-builder/-companion/index.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivityBuilder.Companion/DEFAULT_UTILITY/#/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity-builder/-companion/-d-e-f-a-u-l-t_-u-t-i-l-i-t-y.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivityBuilder.Companion/TITLE/#/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity-builder/-companion/-t-i-t-l-e.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivityBuilder.Companion/TOAST_ENABLED/#/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity-builder/-companion/-t-o-a-s-t_-e-n-a-b-l-e-d.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivityBuilder.Companion/getInstance/#android.app.Activity/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity-builder/-companion/get-instance.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivityBuilder///PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity-builder/index.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivityBuilder/draw/#kotlin.Int/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity-builder/draw.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivityBuilder/enableToast/#kotlin.Boolean/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity-builder/enable-toast.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivityBuilder/setDefaultUtility/#kotlin.Int/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity-builder/set-default-utility.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivityBuilder/setTitle/#kotlin.Int/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity-builder/set-title.html
+$dokka.location:com.chillibits.drawingactivity/DrawingActivityBuilder/setTitle/#kotlin.String?/PointingToDeclaration/drawingactivity/com.chillibits.drawingactivity/-drawing-activity-builder/set-title.html
 com.chillibits.drawingactivity
 
